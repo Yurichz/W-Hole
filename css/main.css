@@ -1,0 +1,138 @@
+body{
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+}
+li {
+    list-style-type: none;
+    color: #8A8888;
+    padding-bottom: 5px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h2,h4,h5{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: -2px;
+}
+h3{
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+p{
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+.container{
+    background: #122538;
+    padding-top: 11px;
+    margin: 0 auto;
+    padding-left: 146px;
+}
+.SiteName{
+    color: white;
+    font-weight: 700;
+    font-size: 36px;
+    text-decoration: none;
+    letter-spacing: -2px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.menu{
+    display: flex;
+    font-weight: 700;
+}
+
+.GitName{
+    position: absolute;
+    right: 146px;
+    display: flex;
+    height: 70px;
+}
+.git_icon{
+    padding-top: 5px;
+    height: 50px;
+}
+.MadeBy{
+    margin-right: 20px;
+    font-size: 20px;
+    padding-top: 35px;
+}
+.main{
+    margin: 0 auto;
+    background: #EBE5E1;
+    color: #000;
+    padding-left: 146px;
+    padding-bottom: 68px;
+}
+.ContainerContent{
+    display: flex;
+}
+.MessageContent{
+    padding-top: 80px;
+}
+.message{
+    padding: 55px 25px 23px;
+    background: white;
+    width: 426px;
+    height: 400px;
+}
+.PCImage{
+    padding-top: 50px;
+}
+#i1{
+    margin-bottom: 20px;
+}
+.SiteInfo{
+    background: white;
+    width: 1190px;
+    height: 106px;
+    display: flex;
+}
+.H1Info{
+    font-size: 24px;
+    padding-top: 24px;
+}
+.OtherInfo{
+    font-size: 16px;
+    padding: 20px 25px
+}
+.Info{
+    width: 1190px;
+}
+.f1{
+    font-size: 15px;
+    padding-bottom: 15px;
+}
+.f2{
+    color: #8A8888;
+}
+.Info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.MyLinks{
+    color: #8A8888;
+}
+.MyLinks:hover{
+    color: #afacac;
+}
