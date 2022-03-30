@@ -80,11 +80,11 @@ p{
     margin: 0 auto;
     background: #EBE5E1;
     color: #000;
-    padding-left: 146px;
     padding-bottom: 68px;
 }
 .ContainerContent{
     display: flex;
+    justify-content: center;
 }
 .MessageContent{
     padding-top: 80px;
@@ -106,6 +106,7 @@ p{
     width: 1190px;
     height: 106px;
     display: flex;
+    margin-left: 50px;
 }
 .H1Info{
     font-size: 24px;
@@ -115,6 +116,13 @@ p{
 .OtherInfo{
     font-size: 16px;
     padding: 20px 25px
+}
+.InfoContainer{
+    display: flex;
+    justify-content: center;
+    background: #122538;
+    padding: 10px 0 10px 50px;
+    margin: 0 auto;
 }
 .Info{
     width: 1190px;
