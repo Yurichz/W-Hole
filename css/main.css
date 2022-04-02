@@ -78,7 +78,7 @@ p{
 }
 .main{
     margin: 0 auto;
-    background: #EBE5E1;
+    background: #f3f3f3;
     color: #000;
     padding-bottom: 68px;
 }
@@ -94,6 +94,9 @@ p{
     background: white;
     width: 426px;
     height: 400px;
+    border-radius: 50px;
+    box-shadow:  20px 20px 60px #d9d9d9,
+    -20px -20px 60px #ffffff;
 }
 .PCImage{
     padding-top: 50px;
@@ -107,6 +110,9 @@ p{
     height: 106px;
     display: flex;
     margin-left: 50px;
+    border-radius: 50px;
+    box-shadow: inset 20px 20px 60px #bebebe,
+    inset -20px -20px 60px #ffffff;
 }
 .H1Info{
     font-size: 24px;
@@ -144,4 +150,35 @@ p{
 }
 .MyLinks:hover{
     color: #afacac;
+}
+.imgs{
+    padding-top: 20px;
+}
+.prev_image{
+    height: 75px;
+    border-radius: 50px;
+    background: #dfdfdf;
+    box-shadow:  20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+.Li-Images{
+    display:inline-block;
+    padding-right: 58px;
+    padding-bottom: 30px;
+}
+.Li-Images2{
+    display:inline-block;
+    padding-right: 70px;
+    padding-bottom: 30px;
+}
+.prev_image:hover{
+    border-radius: 50px;
+    background: linear-gradient(145deg, #c9c9c9, #efefef);
+    box-shadow:  20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+.prev_image:active{
+    background: linear-gradient(145deg, #c0bfbf, #efefef);
+    box-shadow:  20px 20px 60px #b6b6b6,
+    -20px -20px 60px #ffffff;
 }
