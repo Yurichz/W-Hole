@@ -23,7 +23,6 @@ h1{
 }
 h2,h4,h5{
     margin: 0;
-    padding: 0;
     padding-bottom: 10px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
@@ -40,6 +39,10 @@ p{
     margin: 0;
     padding: 0;
     font-weight: 400;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
 }
 .container{
     background: #122538;
@@ -80,7 +83,6 @@ p{
     margin: 0 auto;
     background: #f3f3f3;
     color: #000;
-    padding-bottom: 68px;
 }
 .ContainerContent{
     display: flex;
@@ -176,9 +178,67 @@ p{
     background: linear-gradient(145deg, #c9c9c9, #efefef);
     box-shadow:  20px 20px 60px #bebebe,
     -20px -20px 60px #ffffff;
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 .prev_image:active{
     background: linear-gradient(145deg, #c0bfbf, #efefef);
     box-shadow:  20px 20px 60px #b6b6b6,
     -20px -20px 60px #ffffff;
+}
+.Best-sellers{
+    margin-top: 20px;
+    background: black;
+    padding-top: 50px;
+}
+.sellers-items{
+    display: grid;
+    margin: 70px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+}
+.seller-images{
+    height: 200px;
+    border-radius: 10px;
+}
+.seller-images:hover{
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.items{
+    width: 200px;
+}
+.items h2{
+    color: white;
+    font-size: 23px;
+    padding: 10px;
+}
+.sellers-text{
+    padding-left: 50px;
+}
+.Sellers-Name h1{
+    padding-left: 100px;
+    color: white;
+    font-size: 50px;
+}
+.sellers-text h3{
+    color: #eeeded;
+    padding-left: 30px;
+    font-weight: 400;
+}
+.btn{
+    border-radius: 50px;
+    background: #950aa5;
+    padding: 10px 70px;
+    margin: 10px 70px 10px 20px;
+    color: white;
+    height: 25px;
+    transition: 150ms linear;
+}
+.btn h2{
+    font-size: 20px;
+}
+.btn:hover{
+    background: #81088d;
+    color: #cecece;
 }
