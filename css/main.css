@@ -197,6 +197,13 @@ a{
     padding-bottom: 20px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 20px;
+    transform: translate(-120%,0px);
+    opacity: 0;
+    transition: all 0.8s ease 0s;
+}
+.sellers-items.active{
+    opacity: 1;
+    transform: translate(0px,0px);
 }
 .seller-images{
     height: 200px;
@@ -220,6 +227,13 @@ a{
     padding-left: 100px;
     color: white;
     font-size: 50px;
+}
+.Sellers-Name{
+    opacity: 0;
+    transition: all 0.8s ease 0s;
+}
+.Sellers-Name.active{
+    opacity: 1;
 }
 .sellers-text h3{
     color: #eeeded;
