@@ -15,14 +15,14 @@ if(ANIM_ITEMS.length > 0){
                 ItemPoint = window.innerHeight - window.innerHeight / ANIM_START
             }
 
-            if((pageYOffset > ANIM_ITEM_OFFSET - ItemPoint) && pageYOffset < (ANIM_ITEM_HEIGHT + ANIM_ITEM_OFFSET)){
+            if(( scrollY > ANIM_ITEM_OFFSET - ItemPoint) &&  scrollY < (ANIM_ITEM_HEIGHT + ANIM_ITEM_OFFSET)){
                 ANIM_ITEM.classList.add('active')
-            } 
+            }
         }
     }
     function offset(el) {
         const rect = el.getBoundingClientRect(),
-            scrollTop =  window.pageYOffset || document.documentElement.scrollTop;
+            scrollTop =  window. scrollY || document.documentElement.scrollTop;
         return { top: rect.top + scrollTop }
     }
     ScrollAnim()
