@@ -1,0 +1,25 @@
+.InfoContainer{
+    display: flex;
+    justify-content: center;
+    background: #122538;
+    padding: 10px 0 10px 50px;
+    margin: 0 auto;
+}
+.Info{
+    width: 1190px;
+    display: flex;
+    justify-content: space-between;
+}
+.MyLinks{
+    color: #8A8888;
+}
+.MyLinks:hover{
+    color: #afacac;
+}
+.f1{
+    font-size: 15px;
+    padding-bottom: 15px;
+}
+.f2{
+    color: #8A8888;
+}

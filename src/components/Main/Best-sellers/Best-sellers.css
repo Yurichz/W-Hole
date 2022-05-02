@@ -1,0 +1,71 @@
+.Best-sellers{
+    margin-top: 20px;
+    background: black;
+    padding-top: 50px;
+}
+.Sellers-Name h1{
+    padding-left: 100px;
+    color: white;
+    font-size: 50px;
+}
+.Sellers-Name{
+    opacity: 0;
+    transition: all 0.8s ease 0s;
+}
+.Sellers-Name.active{
+    opacity: 1;
+}
+.sellers-items{
+    display: grid;
+    margin: 70px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    transform: translate(-120%,0px);
+    opacity: 0;
+    transition: all 0.8s ease 0s;
+}
+.sellers-items.active{
+    opacity: 1;
+    transform: translate(0px,0px);
+}
+.items{
+    width: 200px;
+}
+.items h2{
+    color: white;
+    font-size: 23px;
+    padding: 10px;
+}
+.seller-images{
+    height: 200px;
+    border-radius: 10px;
+}
+.seller-images:hover{
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.sellers-text{
+    padding-left: 50px;
+}
+.sellers-text h3{
+    color: #eeeded;
+    padding-left: 35px;
+    font-weight: 400;
+}
+.btn{
+    border-radius: 50px;
+    background: #950aa5;
+    padding: 10px 70px;
+    margin: 10px 70px 10px 20px;
+    color: white;
+    height: 25px;
+    transition: 150ms linear;
+}
+.btn h2{
+    font-size: 20px;
+}
+.btn:hover{
+    background: #81088d;
+    color: #cecece;
+}

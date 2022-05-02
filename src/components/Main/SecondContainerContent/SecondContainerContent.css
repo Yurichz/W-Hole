@@ -1,0 +1,23 @@
+.SecondContent{
+    display: flex;
+    justify-content: center;
+}
+.SiteInfo{
+    background: white;
+    width: 1190px;
+    height: 106px;
+    display: flex;
+    margin-left: 50px;
+    border-radius: 50px;
+    box-shadow: inset 20px 20px 60px #bebebe,
+    inset -20px -20px 60px #ffffff;
+}
+.H1Info{
+    font-size: 24px;
+    padding-top: 24px;
+    padding-left: 20px;
+}
+.OtherInfo{
+    font-size: 16px;
+    padding: 20px 25px
+}

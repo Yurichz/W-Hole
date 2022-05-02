@@ -1,0 +1,46 @@
+body{
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+}
+li {
+  list-style-type: none;
+  color: #8A8888;
+  padding-bottom: 5px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+h1{
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h2,h4,h5{
+  margin: 0;
+  padding-bottom: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: -2px;
+}
+h3{
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+p{
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+}

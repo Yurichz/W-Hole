@@ -1,0 +1,32 @@
+.menu{
+    background: #122538;
+    padding-top: 11px;
+    margin: 0 auto;
+    padding-left: 146px;
+    display: flex;
+    font-weight: 700;
+}
+.SiteName{
+    color: white;
+    font-weight: 700;
+    font-size: 36px;
+    text-decoration: none;
+    letter-spacing: -2px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.GitName{
+    position: absolute;
+    right: 146px;
+    display: flex;
+    height: 70px;
+}
+.git_icon{
+    padding-top: 5px;
+    height: 50px;
+}
+.MadeBy{
+    margin-right: 20px;
+    font-size: 20px;
+    padding-top: 35px;
+}
