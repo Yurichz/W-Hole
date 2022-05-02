@@ -1,15 +1,28 @@
 {
   "files": {
-    "main.css": "./static/css/main.fd738f4e.css",
-    "main.js": "./static/js/main.ec50a272.js",
+    "main.css": "./static/css/main.dc82c593.css",
+    "main.js": "./static/js/main.00670e06.js",
     "static/js/787.1fee1fb8.chunk.js": "./static/js/787.1fee1fb8.chunk.js",
+    "static/media/m-board.png": "./static/media/m-board.f51fe42ac4b61c53b0f4.png",
+    "static/media/power-unit.png": "./static/media/power-unit.41bc5ae35013715d29f4.png",
+    "static/media/RAM.png": "./static/media/RAM.d1dc8363ec3a8fd97282.png",
+    "static/media/GTX1660.svg": "./static/media/GTX1660.e95a19620b18c3ebc69e335fc2e91892.svg",
+    "static/media/I7-9700k.svg": "./static/media/I7-9700k.cd34336d757b616fc08fb02d15dfa0ba.svg",
+    "static/media/intel.png": "./static/media/intel.778b39f9e4aabb373311.png",
+    "static/media/HyperX-Cloud.svg": "./static/media/HyperX-Cloud.bbd967a7c5e0e3dd217c9628c294673e.svg",
+    "static/media/Razer-Mamba.svg": "./static/media/Razer-Mamba.11f9e723dc93219b5d097a34c1f87261.svg",
+    "static/media/RTX.png": "./static/media/RTX.3b6af9aa2fa2cb867f99.png",
+    "static/media/computer.png": "./static/media/computer.7d5644f70fdea554dab5.png",
+    "static/media/frame.png": "./static/media/frame.c0634f11de5a557a4f91.png",
+    "static/media/github_icon.svg": "./static/media/github_icon.7391aa2af3cb2c3e79e4e886de3ba911.svg",
+    "static/media/Logo.svg": "./static/media/Logo.b684b1055f2a7b645c958dfbe3f375da.svg",
     "index.html": "./index.html",
-    "main.fd738f4e.css.map": "./static/css/main.fd738f4e.css.map",
-    "main.ec50a272.js.map": "./static/js/main.ec50a272.js.map",
+    "main.dc82c593.css.map": "./static/css/main.dc82c593.css.map",
+    "main.00670e06.js.map": "./static/js/main.00670e06.js.map",
     "787.1fee1fb8.chunk.js.map": "./static/js/787.1fee1fb8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd738f4e.css",
-    "static/js/main.ec50a272.js"
+    "static/css/main.dc82c593.css",
+    "static/js/main.00670e06.js"
   ]
 }
