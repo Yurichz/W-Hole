@@ -1,10 +1,18 @@
-.menu{
+.head{
+    width: 100%;
     background: #122538;
     padding-top: 11px;
     margin: 0 auto;
-    padding-left: 146px;
+    padding-left: 30px;
     display: flex;
     font-weight: 700;
+    height: 70px;
+    position: fixed;
+    z-index: 40;
+}
+.LogoAndName{
+    display: flex;
+    margin-left: 100px;
 }
 .SiteName{
     color: white;
@@ -29,4 +37,28 @@
     margin-right: 20px;
     font-size: 20px;
     padding-top: 35px;
+}
+.burger-btn {
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    position: relative;
+    cursor: pointer;
+}
+.burger-btn img{
+    width: 50px;
+    height: 50px;
+}
+.burger-btn:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 30px;
+}
+.burger-btn:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 30px;
 }
