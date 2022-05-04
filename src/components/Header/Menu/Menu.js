@@ -3,11 +3,11 @@ import "./Menu.css"
 
 class Menu extends React.Component {
     ItemsList = this.props.Items.map(item => {
-        return (<li key={item.value}>
+        return (<div key={item.value} className="Item">
                     <h3>
                         <a href={item.href}>{item.value}</a>
                     </h3>
-                </li>)
+                </div>)
     })
     render() {
         return (
@@ -19,9 +19,9 @@ class Menu extends React.Component {
                             {this.props.HeadName}
                         </h1>
                     </div>
-                    <ul>
+                    <div className="Items">
                         {this.ItemsList}
-                    </ul>
+                    </div>
                 </div>
             </div>
         );

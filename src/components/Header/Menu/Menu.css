@@ -38,11 +38,18 @@
 .menuContent a{
     color: white;
 }
-ul{
+.Items{
     text-align: center;
+    width: 95%;
 }
-ul li {
+.Item {
     display: flex;
     align-items: center;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
+    flex-direction: column;
+    transition: ease 0.2s;
+}
+.Item:hover{
+    background: #363636;
+    transition: ease 0.2s;
 }

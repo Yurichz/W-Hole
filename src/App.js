@@ -16,7 +16,7 @@ class App extends React.Component {
         }
         this.changeActiveMenu = this.changeActiveMenu.bind(this);
     }
-    items = [{value: "Главная", href: '/main'},{value: "Каталог", href: '/catalog'},{value: "О нас", href: '/aboutus'}];
+    items = [{value: "Головна", href: '/main'},{value: "Каталог", href: '/catalog'},{value: "Про нас", href: '/aboutus'}];
     changeActiveMenu(){
         this.setState(state => ({
             active: !state.active

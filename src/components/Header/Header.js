@@ -1,7 +1,7 @@
 import React from "react";
 import SiteLogo from "./Logo.svg";
 import GitLogo from "./github_icon.svg";
-import BurgerButton from "./BurgerButton.png";
+import {ReactComponent as BurgerButton} from "./BurgerButton.svg";
 import "./Header.css";
 
 class Header extends React.Component {
@@ -9,7 +9,7 @@ class Header extends React.Component {
         return (
             <header className="head">
                 <div className="burger-btn" onClick={() => this.props.changeActiveMenu()}>
-                    <img src={BurgerButton} alt="Burger_Button"/>
+                    <BurgerButton alt="Burger_Button" className="BurgerImage"/>
                 </div>
                 <div className="LogoAndName">
                     <a className="logo" href="/">
