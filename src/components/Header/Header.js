@@ -1,13 +1,13 @@
 import React from "react";
 import SiteLogo from "./Logo.svg";
-import GitLogo from "./github_icon.svg";
+import Basket from "./Basket.png";
 import {ReactComponent as BurgerButton} from "./BurgerButton.svg";
 import "./Header.css";
 
 class Header extends React.Component {
     render() {
         return (
-            <header className="head">
+            <header>
                 <div className="burger-btn" onClick={() => this.props.changeActiveMenu()}>
                     <BurgerButton alt="Burger_Button" className="BurgerImage"/>
                 </div>
@@ -17,11 +17,11 @@ class Header extends React.Component {
                     </a>
                     <a className="SiteName" href="/">W-Hole</a>
                 </div>
-                <div className="GitName">
+                <div className="BasketName">
                     <p className="MadeBy">MADE BY: KHOLODNIY YURI</p>
-                    <a className="git_icon" href="https://github.com/Yurichz" target="_blank" rel="noreferrer">
-                        <img src={GitLogo} alt="Github_Icon" />
-                    </a>
+                    <div className="BasketButton"  onClick={() => this.props.changeActiveBasket()} >
+                        <img src={Basket} alt="Basket_Icon" className="BasketIcon" />
+                    </div>
                 </div>
             </header>
         )

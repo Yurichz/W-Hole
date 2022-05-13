@@ -1,0 +1,51 @@
+.shopItemCase{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+.shopItemInfo h2{
+    color: white;
+    font-size: 23px;
+    padding: 10px;
+}
+.shopItemInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.shopItem-images{
+    height: 200px;
+    border-radius: 10px;
+}
+.shopItem-images:hover{
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.shopItem-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.shopItem-text h3{
+    color: white;
+    font-weight: 400;
+}
+.btn{
+    display: flex;
+    border-radius: 50px;
+    background: #950aa5;
+    padding: 10px 70px;
+    margin: 20px 20px 20px 20px;
+    color: white;
+    height: 25px;
+    transition: 150ms linear;
+    cursor: pointer;
+    justify-content: center;
+}
+.btn p{
+    font-size: 20px;
+    color: white;
+}
+.btn:hover{
+    background: #81088d;
+}

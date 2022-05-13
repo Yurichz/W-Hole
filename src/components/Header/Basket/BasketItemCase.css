@@ -1,0 +1,32 @@
+.BasketProduct{
+    background-color: wheat;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    color: black;
+}
+.BasketProductInfo{
+    display: flex;
+    justify-content: space-between;
+}
+.BasketProductInfo h2{
+    padding: 0;
+}
+.BasketProductBoxInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.DeleteIconFromBasket{
+    padding: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+.DeleteIconFromBasket:hover{
+    background-color: blueviolet;
+}
+.BasketProductImage{
+    height: 50px;
+    margin-right: 10px;
+}

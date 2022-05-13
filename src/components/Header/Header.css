@@ -1,4 +1,4 @@
-.head{
+header{
     width: 100%;
     background: #122538;
     padding-top: 11px;
@@ -23,15 +23,16 @@
     padding-top: 10px;
     padding-left: 10px;
 }
-.GitName{
+.BasketName{
     position: absolute;
     right: 146px;
     display: flex;
     height: 70px;
 }
-.git_icon{
-    padding-top: 5px;
+.BasketIcon{
+    padding-top: 10px;
     height: 50px;
+    cursor: pointer;
 }
 .MadeBy{
     margin-right: 20px;
