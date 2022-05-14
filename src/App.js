@@ -53,8 +53,12 @@ class App extends React.Component {
     render() {
         return (
             <>
-                <Header changeActiveMenu={this.changeActiveMenu} changeActiveBasket={this.changeActiveBasket} deleteFromBasket={this.deleteFromBasket}/>
-                <Main addToBasket={this.addToBasket} />
+                <Header changeActiveMenu={this.changeActiveMenu}
+                        changeActiveBasket={this.changeActiveBasket}
+                        deleteFromBasket={this.deleteFromBasket}
+                        basketLength={this.state.basketProducts.length}
+                />
+                <Main addToBasket={this.addToBasket}/>
                 <Footer />
                 <Basket active={this.state.activeBasket} changeActiveBasket={this.changeActiveBasket} basketProducts={this.state.basketProducts} deleteFromBasket={this.deleteFromBasket}/>
                 <Menu active={this.state.activeMenu} changeActiveMenu={this.changeActiveMenu} headName={"Меню сайта"} items={this.items}/>

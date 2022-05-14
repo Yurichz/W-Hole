@@ -21,6 +21,7 @@ class Header extends React.Component {
                     <p className="MadeBy">MADE BY: KHOLODNIY YURI</p>
                     <div className="BasketButton"  onClick={() => this.props.changeActiveBasket()} >
                         <img src={Basket} alt="Basket_Icon" className="BasketIcon" />
+                        <h3>{this.props.basketLength}</h3>
                     </div>
                 </div>
             </header>

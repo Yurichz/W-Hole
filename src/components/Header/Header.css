@@ -73,3 +73,10 @@ header{
 .BurgerImage *{
     fill: white;
 }
+.BasketButton{
+    display: flex;
+}
+.BasketButton h3{
+    margin-top: auto;
+    margin-bottom: 5px;
+}
