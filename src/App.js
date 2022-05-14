@@ -36,9 +36,12 @@ class App extends React.Component {
     }
 
     addToBasket(Product){
-        this.setState(state=> ({
-            basketProducts: [...state.basketProducts, Product]
-        }))
+        const arrIds = this.state.basketProducts.map(elem => elem.Details.Id);
+        if(!arrIds.includes(Product.Details.Id)){
+            this.setState(state=> ({
+                basketProducts: [...state.basketProducts, Product]
+            }))
+        }
     }
 
     deleteFromBasket(Id){
