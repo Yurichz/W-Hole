@@ -5,6 +5,34 @@ import {ReactComponent as BurgerButton} from "./BurgerButton.svg";
 import "./Header.css";
 
 class Header extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            basketLengthAnim: "basketLength"
+        }
+    }
+
+
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextProps.basketLength !== this.props.basketLength){
+            this.setState((state) => {
+                return {basketLengthAnim: "basketLength anim"}
+            });
+            setTimeout(()=> { return this.setState((state) => {
+                return {basketLengthAnim: "basketLength"}
+            })}, 100);
+            return true;
+        } if(nextState.basketLengthAnim !== this.state.basketLengthAnim){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.basketLengthAnim);
+    }
+
     render() {
         return (
             <header>
@@ -21,7 +49,9 @@ class Header extends React.Component {
                     <p className="MadeBy">MADE BY: KHOLODNIY YURI</p>
                     <div className="BasketButton"  onClick={() => this.props.changeActiveBasket()} >
                         <img src={Basket} alt="Basket_Icon" className="BasketIcon" />
-                        <h3>{this.props.basketLength}</h3>
+                        <div className={this.state.basketLengthAnim}>
+                            <h3>{this.props.basketLength}</h3>
+                        </div>
                     </div>
                 </div>
             </header>

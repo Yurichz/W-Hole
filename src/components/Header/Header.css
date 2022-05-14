@@ -76,7 +76,14 @@ header{
 .BasketButton{
     display: flex;
 }
-.BasketButton h3{
+.basketLength{
+    padding: 5px;
     margin-top: auto;
     margin-bottom: 5px;
+    transition: ease 0.2s;
+}
+.basketLength.anim{
+    border-radius: 50px;
+    background-color: blueviolet;
+    transition: ease 0.2s;
 }
