@@ -1,0 +1,14 @@
+.ShopFilterList{
+    border-right: 2px solid purple;
+    margin-right: 40px;
+}
+.ShopFilterList h2{
+    color: white;
+    padding-bottom: 30px;
+}
+.FilterItems{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

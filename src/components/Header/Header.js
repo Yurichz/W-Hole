@@ -12,7 +12,6 @@ class Header extends React.Component {
         }
     }
 
-
     shouldComponentUpdate(nextProps, nextState){
         if(nextProps.basketLength !== this.props.basketLength){
             this.setState((state) => {
@@ -27,10 +26,6 @@ class Header extends React.Component {
         } else {
             return false;
         }
-    }
-
-    componentWillUnmount() {
-        clearTimeout(this.basketLengthAnim);
     }
 
     render() {

@@ -8,6 +8,10 @@
     padding-bottom: 50px;
     font-size: 50px;
 }
+.shopItemsAndFilters{
+    display: grid;
+    grid-template-columns: 15% 80%;
+}
 .shopItems{
     display: grid;
     width: 100%;

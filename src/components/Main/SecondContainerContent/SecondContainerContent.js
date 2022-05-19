@@ -1,7 +1,7 @@
 import React from "react";
 import "./SecondContainerContent.css";
 
-class SecondContainerContent extends React.Component {
+class SecondContainerContent extends React.PureComponent {
     render() {
         return (
             <div className="SecondContent">

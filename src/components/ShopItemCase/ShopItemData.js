@@ -20,7 +20,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 1,
             "Alt": "Intel I7-9700k",
-            "Purchase": 1397
+            "Purchase": 1397,
+            "Tags":[
+                "CPU",
+                "INTEL"
+            ]
         }
     },
     {
@@ -30,7 +34,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 2,
             "Alt": "MSI GTX 1660",
-            "Purchase": 1041
+            "Purchase": 1041,
+            "Tags":[
+                "GPU",
+                "NVIDIA"
+            ]
         }
     },
     {
@@ -40,7 +48,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 3,
             "Alt": "Razer Mamba",
-            "Purchase": 1243
+            "Purchase": 1243,
+            "Tags":[
+                "MOUSE",
+                "RAZER"
+            ]
         }
     },
     {
@@ -50,7 +62,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 4,
             "Alt": "HyperX Cloud",
-            "Purchase": 894
+            "Purchase": 894,
+            "Tags":[
+                "HEADPHONES",
+                "HYPERX"
+            ]
         }
     },
     {
@@ -60,7 +76,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 5,
             "Alt": "Samsung F24T350FHI Dark Gray",
-            "Purchase": 1693
+            "Purchase": 1693,
+            "Tags":[
+                "MONITOR",
+                "SAMSUNG"
+            ]
         }
     },
     {
@@ -70,7 +90,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 6,
             "Alt": "AOC 24G2",
-            "Purchase": 1967
+            "Purchase": 1967,
+            "Tags":[
+                "MONITOR",
+                "AOC"
+            ]
         }
     },
     {
@@ -80,7 +104,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 7,
             "Alt": "Samsung Odyssey G5",
-            "Purchase": 500
+            "Purchase": 500,
+            "Tags":[
+                "MONITOR",
+                "SAMSUNG"
+            ]
         }
     },
     {
@@ -90,7 +118,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 8,
             "Alt": "QUBE Overlord",
-            "Purchase": 525
+            "Purchase": 525,
+            "Tags":[
+                "MONITOR",
+                "QUBE"
+            ]
         }
     },
     {
@@ -100,7 +132,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 9,
             "Alt": "AMD Ryzen 5 5600X",
-            "Purchase": 1902
+            "Purchase": 1902,
+            "Tags":[
+                "CPU",
+                "AMD"
+            ]
         }
     },
     {
@@ -111,6 +147,11 @@ const ShopItemsData = [
             "Id": 10,
             "Alt": "AMD Radeon RX 6600",
             "Purchase": 1158
+            ,
+            "Tags":[
+                "GPU",
+                "AMD"
+            ]
         }
     },
     {
@@ -120,7 +161,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 11,
             "Alt": "Kingston Fury 16GB",
-            "Purchase": 1728
+            "Purchase": 1728,
+            "Tags":[
+                "RAM",
+                "KINGSTON"
+            ]
         }
     },
     {
@@ -130,7 +175,11 @@ const ShopItemsData = [
         "Details": {
             "Id": 12,
             "Alt": "MSI RTX3060Ti 8Gb",
-            "Purchase": 1405
+            "Purchase": 1405,
+            "Tags":[
+                "GPU",
+                "NVIDIA"
+            ]
         }
     },
 ]

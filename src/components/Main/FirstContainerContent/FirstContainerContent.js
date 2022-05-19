@@ -8,7 +8,7 @@ import Frame from "./frame.png";
 import Power from "./power-unit.png";
 import Computer from "./computer.png";
 
-class FirstContainerContent extends React.Component {
+class FirstContainerContent extends React.PureComponent {
     render() {
         return (
             <div className="FirstContent">

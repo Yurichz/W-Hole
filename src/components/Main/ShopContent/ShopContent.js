@@ -2,21 +2,52 @@ import React, {Component} from 'react';
 import ShopItemsList from "../../ShopItemCase/ShopItemList";
 import ShopItemsData from "../../ShopItemCase/ShopItemData";
 import "./ShopContent.css"
+import ShopFilterList from "./ShopFilterList";
+import AOS from "aos";
+import "aos/dist/aos.css"
 
 class ShopContent extends Component {
     constructor() {
         super();
         this.state = {
-            sortSelector : "byId"
+            sortSelector : "byId",
+            shopFilters : []
         }
         this.changeSortSelector = this.changeSortSelector.bind(this);
+        this.checkInFilter = this.checkInFilter.bind(this);
+        this.addOrRemoveToFilter = this.addOrRemoveToFilter.bind(this);
     }
     ShopItemsData = ShopItemsData.slice();
+
+    componentDidMount() {
+        AOS.init({ duration: 800, once: true});
+    }
 
     changeSortSelector(sort){
         this.setState(state =>({
             sortSelector: sort
         }));
+    }
+
+    addOrRemoveToFilter(filter){
+        if(!this.state.shopFilters.includes(filter)){
+            this.setState(state =>({
+                shopFilters: [...state.shopFilters, filter]
+            }))
+        } else {
+            this.setState(state=> ({
+                shopFilters: state.shopFilters.filter((item) => {return item !== filter})
+            }))
+        }
+    }
+
+    checkInFilter(item){
+        for(let filter in this.state.shopFilters){
+            if(item.Details.Tags.includes(this.state.shopFilters[filter])){
+                return true;
+            }
+        }
+        return false;
     }
 
     sortBySelectedWithMethodSort(){
@@ -55,8 +86,14 @@ class ShopContent extends Component {
                         <option value="byPopular">Ходові</option>
                     </select>
                 </div>
-                <div className="shopItems">
-                    <ShopItemsList shopElements={this.ShopItemsData} addToBasket={this.props.addToBasket}/>
+                <div className="shopItemsAndFilters">
+                    <ShopFilterList addOrRemoveToFilter={this.addOrRemoveToFilter} />
+                    <div className="shopItems" data-aos="fade-left">
+                        <ShopItemsList shopElements={ this.state.shopFilters.length ?
+                            this.ShopItemsData.filter(item => this.checkInFilter(item)) :
+                            this.ShopItemsData}
+                                       addToBasket={this.props.addToBasket}/>
+                    </div>
                 </div>
             </div>
         );

@@ -1,0 +1,17 @@
+.FilterCase {
+    display: flex;
+    color: white;
+    border-radius: 50px;
+    background-color: rgb(120,25,190);
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 75%;
+    cursor: pointer;
+    justify-content: center;
+    transition: ease 0.2s;
+}
+.FilterCase.active{
+    background-color: rgb(73, 17, 112);
+    transition: ease 0.2s;
+    color: #d7d7d7;
+}
