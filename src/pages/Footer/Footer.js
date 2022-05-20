@@ -14,7 +14,7 @@ class Footer extends React.PureComponent {
                                     <a href="https://github.com/Yurichz" className="MyLinks" target="_blank" rel="noreferrer">GITHUB</a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/yurich_hz/" className="MyLinks"
+                                    <a href="src/pages/Footer/Footer" className="MyLinks"
                                        target="_blank" rel="noreferrer">INST</a>
                                 </li>
                             </ul>

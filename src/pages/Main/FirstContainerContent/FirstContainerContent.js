@@ -21,32 +21,32 @@ class FirstContainerContent extends React.PureComponent {
                         <div className="img">
                             <ul>
                                 <li className="Li-Images">
-                                    <a href="/">
+                                    <a href="/src/pages">
                                         <img className="prev_image" src={RTX} alt="RTX" />
                                     </a>
                                 </li>
                                 <li className="Li-Images">
-                                    <a href="/">
+                                    <a href="/src/pages">
                                         <img className="prev_image" src={Intel} alt="Intel" />
                                     </a>
                                 </li>
                                 <li className="Li-Images">
-                                    <a href="/">
+                                    <a href="/src/pages">
                                         <img className="prev_image" src={RAM} alt="RAM" />
                                     </a>
                                 </li>
                                 <li className="Li-Images2">
-                                    <a href="/">
+                                    <a href="/src/pages">
                                         <img className="prev_image" src={MBoard} alt="Board" />
                                     </a>
                                 </li>
                                 <li className="Li-Images2">
-                                    <a href="/">
+                                    <a href="/src/pages">
                                         <img className="prev_image" src={Frame} alt="frame" />
                                     </a>
                                 </li>
                                 <li className="Li-Images2">
-                                    <a href="/">
+                                    <a href="/src/pages">
                                         <img className="prev_image" src={Power} alt="power" />
                                     </a>
                                 </li>

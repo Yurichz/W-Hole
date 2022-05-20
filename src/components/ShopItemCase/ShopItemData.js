@@ -1,15 +1,15 @@
-import IntelI7 from "./images/I7-9700k.svg";
-import GTX1660 from "./images/GTX1660.svg";
-import RazerMamba from "./images/Razer-Mamba.svg";
-import HyperXCLoud from "./images/HyperX-Cloud.svg";
-import AOC24G2BK01 from "./images/AOC 24G2BK01.jpg";
-import QUBEOverlord from "./images/QUBE Overlord C27Q165Plus.jpg";
-import SamsungF24T350FHI from "./images/Samsung F24T350FHI Dark Gray.jpg";
-import SamsungOdysseyG5 from "./images/Samsung Odyssey G5.jpg";
-import AMDRyzen55600X from "./images/AMD Ryzen 5 5600X.jpg";
-import KingstonFury16GB from "./images/Kingston Fury DDR4 16GB.jpg";
-import AMDRadeonRX6600 from "./images/MSI AMD Radeon RX 6600.jpg";
-import RTX3060Ti from "./images/MSI GeForce RTX3060Ti.jpg";
+import IntelI7 from "../images/I7-9700k.svg";
+import GTX1660 from "../images/GTX1660.svg";
+import RazerMamba from "../images/Razer-Mamba.svg";
+import HyperXCLoud from "../images/HyperX-Cloud.svg";
+import AOC24G2BK01 from "../images/AOC 24G2BK01.jpg";
+import QUBEOverlord from "../images/QUBE Overlord C27Q165Plus.jpg";
+import SamsungF24T350FHI from "../images/Samsung F24T350FHI Dark Gray.jpg";
+import SamsungOdysseyG5 from "../images/Samsung Odyssey G5.jpg";
+import AMDRyzen55600X from "../images/AMD Ryzen 5 5600X.jpg";
+import KingstonFury16GB from "../images/Kingston Fury DDR4 16GB.jpg";
+import AMDRadeonRX6600 from "../images/MSI AMD Radeon RX 6600.jpg";
+import RTX3060Ti from "../images/MSI GeForce RTX3060Ti.jpg";
 
 
 const ShopItemsData = [

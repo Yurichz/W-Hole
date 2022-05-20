@@ -1,8 +1,8 @@
 import React from "react";
 import "./Best-sellers.css";
 import AOS from "aos";
-import ShopItemsList from "../../ShopItemCase/ShopItemList";
-import ShopItemsData from "../../ShopItemCase/ShopItemData"
+import ShopItemsList from "../../../components/ShopItemCase/ShopItemList";
+import ShopItemsData from "../../../components/ShopItemCase/ShopItemData"
 import "aos/dist/aos.css"
 
 class Bestsellers extends React.Component {

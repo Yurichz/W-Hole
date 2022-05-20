@@ -1,11 +1,11 @@
 import './App.css';
 import React from "react";
 import "aos/dist/aos.css"
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
-import Menu from "./components/Header/Menu/Menu";
-import Basket from "./components/Header/Basket/Basket";
+import Header from "./pages/Header/Header";
+import Main from "./pages/Main/Main";
+import Footer from "./pages/Footer/Footer";
+import Menu from "./pages/Header/Menu/Menu";
+import Basket from "./pages/Header/Basket/Basket";
 
 
 
@@ -17,34 +17,32 @@ class App extends React.Component {
             activeBasket : false,
             basketProducts: []
         }
-        this.changeActiveMenu = this.changeActiveMenu.bind(this);
-        this.changeActiveBasket = this.changeActiveBasket.bind(this);
-        this.addToBasket = this.addToBasket.bind(this);
-        this.deleteFromBasket = this.deleteFromBasket.bind(this);
     }
     items = [{value: "Головна", href: '/main'},{value: "Каталог", href: '/catalog'},{value: "Про нас", href: '/aboutus'}];
-    changeActiveMenu(){
+    changeActiveMenu= () =>{
         this.setState(state => ({
             activeMenu: !state.activeMenu
         }));
     }
 
-    changeActiveBasket(){
+    changeActiveBasket= () =>{
         this.setState(state => ({
             activeBasket: !state.activeBasket
         }))
     }
 
-    addToBasket(Product){
+    addToBasket= (Product) =>{
         const arrIds = this.state.basketProducts.map(elem => elem.Details.Id);
-        if(!arrIds.includes(Product.Details.Id)){
-            this.setState(state=> ({
-                basketProducts: [...state.basketProducts, Product]
-            }))
-        }
+        this.setState((state)=> {
+            if(!arrIds.includes(Product.Details.Id)){
+                return ({
+                    basketProducts: [...state.basketProducts, Product]
+                })
+            }
+        })
     }
 
-    deleteFromBasket(Id){
+    deleteFromBasket= (Id) =>{
         this.setState(state=>({
             basketProducts: state.basketProducts.filter((item) => {return item.Details.Id !== Id})
         }))

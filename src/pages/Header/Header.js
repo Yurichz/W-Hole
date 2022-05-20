@@ -13,15 +13,15 @@ class Header extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        if(nextProps.basketLength !== this.props.basketLength){
-            this.setState((state) => {
-                return {basketLengthAnim: "basketLength anim"}
-            });
-            setTimeout(()=> { return this.setState((state) => {
-                return {basketLengthAnim: "basketLength"}
-            })}, 100);
-            return true;
-        } if(nextState.basketLengthAnim !== this.state.basketLengthAnim){
+        if(nextState.basketLengthAnim !== this.state.basketLengthAnim || nextProps.basketLength !== this.props.basketLength){
+            if(nextProps.basketLength !== this.props.basketLength){
+                this.setState((state) => {
+                    return {basketLengthAnim: "basketLength anim"}
+                });
+                setTimeout(()=> { return this.setState((state) => {
+                    return {basketLengthAnim: "basketLength"}
+                })}, 100);
+            }
             return true;
         } else {
             return false;
@@ -35,10 +35,10 @@ class Header extends React.Component {
                     <BurgerButton alt="Burger_Button" className="BurgerImage"/>
                 </div>
                 <div className="LogoAndName">
-                    <a className="logo" href="/">
+                    <a className="logo" href="/src/pages">
                         <img src={SiteLogo} alt="Logo_W-Hole" />
                     </a>
-                    <a className="SiteName" href="/">W-Hole</a>
+                    <a className="SiteName" href="/src/pages">W-Hole</a>
                 </div>
                 <div className="BasketName">
                     <p className="MadeBy">MADE BY: KHOLODNIY YURI</p>
