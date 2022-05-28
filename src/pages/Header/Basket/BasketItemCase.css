@@ -4,6 +4,14 @@
     padding: 20px;
     border-radius: 20px;
     color: black;
+    transition: ease 0.2s;
+    cursor: grab;
+}
+.BasketProduct.active{
+    margin: 10px;
+    border: 10px black;
+    background-color: #776b58;
+    transition: ease 0.2s;
 }
 .BasketProductInfo{
     display: flex;

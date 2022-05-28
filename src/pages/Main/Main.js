@@ -4,6 +4,7 @@ import SecondContainerContent from "./SecondContainerContent/SecondContainerCont
 import BestSellers from "./Best-sellers/Best-sellers.js";
 import ShopContent from "./ShopContent/ShopContent";
 import "./Main.css";
+import PropTypes from "prop-types";
 
 class Main extends React.Component {
     render() {
@@ -16,6 +17,10 @@ class Main extends React.Component {
             </div>
         )
     }
+}
+
+Main.propTypes = {
+    addToBasket: PropTypes.func
 }
 
 export default Main;

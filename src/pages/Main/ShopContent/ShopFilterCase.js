@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import "./ShopFilterCase.css"
+import PropTypes from "prop-types";
 
 class ShopFilterCase extends Component {
     constructor() {
@@ -26,6 +27,11 @@ class ShopFilterCase extends Component {
             </div>
         );
     }
+}
+
+ShopFilterCase.propTypes = {
+    filter: PropTypes.string,
+    addOrRemoveToFilter: PropTypes.func
 }
 
 export default ShopFilterCase;

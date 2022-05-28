@@ -1,11 +1,5 @@
-import './App.css';
 import React from "react";
-import "aos/dist/aos.css"
-import Header from "./pages/Header/Header";
-import Main from "./pages/Main/Main";
-import Footer from "./pages/Footer/Footer";
-import Menu from "./pages/Header/Menu/Menu";
-import Basket from "./pages/Header/Basket/Basket";
+import AppView from "./AppView";
 
 
 
@@ -15,7 +9,8 @@ class App extends React.Component {
         this.state = {
             activeMenu : false,
             activeBasket : false,
-            basketProducts: []
+            basketProducts: [],
+            currentProduct: null
         }
     }
     items = [{value: "Головна", href: '/main'},{value: "Каталог", href: '/catalog'},{value: "Про нас", href: '/aboutus'}];
@@ -48,18 +43,52 @@ class App extends React.Component {
         }))
     }
 
+    dragStartHandler = (e,product) => {
+        this.setState({currentProduct: product})
+    }
+
+    dragOverHandler = (e) => {
+        e.preventDefault();
+    }
+
+    dragDropHandler = (e,product) => {
+        e.preventDefault();
+        this.setState((state) => {
+            return{
+                basketProducts: state.basketProducts.map(s => {
+                    if(s.Details.Id === product.Details.Id){
+                        return state.currentProduct
+                    }
+                    if(s.Details.Id === state.currentProduct.Details.Id){
+                        return product
+                    }
+                    return s
+                })
+            }
+        })
+    }
+
     render() {
         return (
             <>
-                <Header changeActiveMenu={this.changeActiveMenu}
-                        changeActiveBasket={this.changeActiveBasket}
-                        deleteFromBasket={this.deleteFromBasket}
-                        basketLength={this.state.basketProducts.length}
+                <AppView
+                    changeActiveMenu={this.changeActiveMenu}
+                    changeActiveBasket={this.changeActiveBasket}
+                    deleteFromBasket={this.deleteFromBasket}
+                    basketLength={this.state.basketProducts.length}
+
+                    addToBasket={this.addToBasket}
+
+                    activeBasket={this.state.activeBasket}
+                    basketProducts={this.state.basketProducts}
+                    dragStartHandler={this.dragStartHandler}
+                    dragOverHandler={this.dragOverHandler}
+                    dragDropHandler={this.dragDropHandler}
+
+                    activeMenu={this.state.activeMenu}
+                    headName={"Меню сайта"}
+                    items={this.items}/>
                 />
-                <Main addToBasket={this.addToBasket}/>
-                <Footer />
-                <Basket active={this.state.activeBasket} changeActiveBasket={this.changeActiveBasket} basketProducts={this.state.basketProducts} deleteFromBasket={this.deleteFromBasket}/>
-                <Menu active={this.state.activeMenu} changeActiveMenu={this.changeActiveMenu} headName={"Меню сайта"} items={this.items}/>
             </>
         );
     }

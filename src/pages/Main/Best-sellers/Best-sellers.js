@@ -4,6 +4,7 @@ import AOS from "aos";
 import ShopItemsList from "../../../components/ShopItemCase/ShopItemList";
 import ShopItemsData from "../../../components/ShopItemCase/ShopItemData"
 import "aos/dist/aos.css"
+import PropTypes from "prop-types";
 
 class Bestsellers extends React.Component {
     ShopItemsData = ShopItemsData.slice().sort((a, b) => b.Details.Purchase-a.Details.Purchase).slice(0, 4);
@@ -23,6 +24,10 @@ class Bestsellers extends React.Component {
             </div>
         )
     }
+}
+
+Bestsellers.propTypes = {
+    addToBasket: PropTypes.func
 }
 
 export default Bestsellers;

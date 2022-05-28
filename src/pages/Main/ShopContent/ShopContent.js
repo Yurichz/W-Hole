@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import ShopItemsList from "../../../components/ShopItemCase/ShopItemList";
 import ShopItemsData from "../../../components/ShopItemCase/ShopItemData";
 import "./ShopContent.css"
-import ShopFilterList from "./ShopFilterList";
 import AOS from "aos";
 import "aos/dist/aos.css"
+import PropTypes from "prop-types";
+import ShopContentView from "./ShopContentView";
 
 class ShopContent extends Component {
     constructor() {
@@ -20,11 +20,14 @@ class ShopContent extends Component {
         AOS.init({ duration: 800, once: true});
     }
 
+    componentDidUpdate(prevProps, prevState,){
+        if(prevState.sortSelector !== this.state.sortSelector){
+            this.sortBySelectedWithMethodSort();
+        }
+    }
+
     shouldComponentUpdate(nextProps, nextState){
         if(nextState !== this.state){
-            if(nextState.sortSelector !== this.state.sortSelector){
-                this.sortBySelectedWithMethodSort();
-            }
             return true;
         } else {
             return false;
@@ -92,30 +95,22 @@ class ShopContent extends Component {
 
     render() {
         return (
-            <div className="shopContent">
-                <div className="shopContentInfo">
-                    <h1>Магазин товарів</h1>
-                    <select className="shopSortSelector" onChange={(e)=>{
-                        this.changeSortSelector(e.target.value);
-                    }
-                    }>
-                        <option value="byId">По ІD</option>
-                        <option value="byPrice">По зростанню ціни</option>
-                        <option value="byPopular">Ходові</option>
-                    </select>
-                </div>
-                <div className="shopItemsAndFilters">
-                    <ShopFilterList addOrRemoveToFilter={this.addOrRemoveToFilter} />
-                    <div className="shopItems" data-aos="fade-left">
-                        <ShopItemsList shopElements={ this.state.shopFilters.length ?
-                            this.state.ShopItemsData.filter(item => this.checkInFilter(item)) :
-                            this.state.ShopItemsData}
-                                       addToBasket={this.props.addToBasket}/>
-                    </div>
-                </div>
-            </div>
+            <>
+                <ShopContentView
+                    changeSortSelector={this.changeSortSelector}
+                    addOrRemoveToFilter={this.addOrRemoveToFilter}
+                    shopFiltersLength={this.state.shopFilters.length}
+                    ShopItemsData={this.state.ShopItemsData}
+                    checkInFilter={this.checkInFilter}
+                    addToBasket={this.props.addToBasket}
+                />
+            </>
         );
     }
+}
+
+ShopContent.propTypes = {
+    addToBasket: PropTypes.func
 }
 
 export default ShopContent;

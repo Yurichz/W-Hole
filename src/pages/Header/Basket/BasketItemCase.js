@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
 import "./BasketItemCase.css"
+import PropTypes from "prop-types";
 
 class BasketItemCase extends Component {
     render() {
         return (
-            <div className="BasketProduct">
+            <div className={(this.props.active) ? "BasketProduct active" : "BasketProduct"}
+                 onDragStart={(e) => this.props.dragStartHandler(e,this.props.product)}
+                 onDragOver={(e) => this.props.dragOverHandler(e)}
+                 onDrop={(e) => this.props.dragDropHandler(e,this.props.product)}
+                 draggable={true}
+            >
                 <div className="BasketProductInfo">
                     <div className="BasketProductBoxInfo">
                         <img className="BasketProductImage" src={this.props.product.Image} alt={this.props.product.Details.Alt}/>
@@ -20,6 +26,15 @@ class BasketItemCase extends Component {
             </div>
         );
     }
+}
+
+BasketItemCase.propTypes = {
+    product: PropTypes.object,
+    deleteFromBasket: PropTypes.func,
+    active: PropTypes.bool,
+    dragStartHandler: PropTypes.func,
+    dragOverHandler: PropTypes.func,
+    dragDropHandler: PropTypes.func
 }
 
 export default BasketItemCase;

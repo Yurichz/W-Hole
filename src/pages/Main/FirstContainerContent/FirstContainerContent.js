@@ -55,7 +55,10 @@ class FirstContainerContent extends React.PureComponent {
                     </div>
                 </div>
                 <div className="PCImage">
-                    <img src={Computer} alt="Gamer_PC" />
+                    <img src={Computer} alt="Gamer_PC"
+                         onLoad={() => console.log("Image computer.png is loaded")}
+                         onError={() => console.log("Error in image computer.png :(")}
+                    />
                 </div>
             </div>
         )

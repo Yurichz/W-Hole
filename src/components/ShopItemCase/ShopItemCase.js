@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import "./ShopItemCase.css"
+import PropTypes from "prop-types";
 
 class ShopItemCase extends Component {
     render() {
@@ -26,6 +27,11 @@ class ShopItemCase extends Component {
             </>
         );
     }
+}
+
+ShopItemCase.propTypes = {
+    addToBasket: PropTypes.func,
+    element: PropTypes.object
 }
 
 export default ShopItemCase;

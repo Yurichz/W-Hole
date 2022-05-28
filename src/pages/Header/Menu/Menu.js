@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Menu.css"
+import PropTypes from "prop-types";
 
 class Menu extends React.Component {
     render() {
@@ -24,6 +25,13 @@ class Menu extends React.Component {
             </div>
         );
     }
+}
+
+Menu.propTypes = {
+    active: PropTypes.bool,
+    changeActiveMenu: PropTypes.func,
+    headName: PropTypes.string,
+    items: PropTypes.array
 }
 
 export default Menu;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ShopFilterCase from "./ShopFilterCase";
 import "./ShopFilterList.css";
+import PropTypes from "prop-types";
 
 class ShopFilterList extends Component {
     filterList = ["MONITOR","GPU","CPU","MOUSE","HEADPHONES","RAM"];
@@ -18,6 +19,10 @@ class ShopFilterList extends Component {
             </>
         );
     }
+}
+
+ShopFilterList.propTypes = {
+    addOrRemoveToFilter: PropTypes.func
 }
 
 export default ShopFilterList;
