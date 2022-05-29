@@ -88,7 +88,6 @@ class App extends React.Component {
                     activeMenu={this.state.activeMenu}
                     headName={"Меню сайта"}
                     items={this.items}/>
-                />
             </>
         );
     }
