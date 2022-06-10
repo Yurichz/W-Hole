@@ -18,12 +18,14 @@ class Bestsellers extends React.Component {
                 <div className="Sellers-Name" data-aos="fade-up">
                     <h1>ХОДОВИЙ ТОВАР</h1>
                 </div>
-                <div className="sellers-items" data-aos="fade-right" data-aos-anchor-placement="center-bottom">
-                    <ShopItemsList shopElements={this.ShopItemsData}
-                                   addToBasket={this.props.addToBasket}
-                                   currentCurrency={this.props.currentCurrency}
-                                   currentCurrencySign={this.props.currentCurrencySign}
-                    />
+                <div className="sellers-items-case">
+                    <div className="sellers-items" data-aos="fade-right" data-aos-anchor-placement="center-bottom">
+                        <ShopItemsList shopElements={this.ShopItemsData}
+                                       addToBasket={this.props.addToBasket}
+                                       currentCurrency={this.props.currentCurrency}
+                                       currentCurrencySign={this.props.currentCurrencySign}
+                        />
+                    </div>
                 </div>
             </div>
         )
