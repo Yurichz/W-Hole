@@ -26,7 +26,10 @@ class ShopContentView extends Component {
                         <ShopItemsList shopElements={ this.props.shopFiltersLength ?
                             this.props.ShopItemsData.filter(item => this.props.checkInFilter(item)) :
                             this.props.ShopItemsData}
-                                       addToBasket={this.props.addToBasket}/>
+                                       addToBasket={this.props.addToBasket}
+                                       currentCurrency={this.props.currentCurrency}
+                                       currentCurrencySign={this.props.currentCurrencySign}
+                        />
                     </div>
                 </div>
             </div>
@@ -40,7 +43,9 @@ ShopContentView.propTypes = {
     changeSortSelector: PropTypes.func,
     addOrRemoveToFilter: PropTypes.func,
     checkInFilter: PropTypes.func,
-    addToBasket: PropTypes.func
+    addToBasket: PropTypes.func,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 }
 
 export default ShopContentView;

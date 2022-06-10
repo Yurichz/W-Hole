@@ -19,7 +19,13 @@ class HeaderView extends Component {
                     <a className="SiteName" href="/src/pages">W-Hole</a>
                 </div>
                 <div className="BasketName">
-                    <p className="MadeBy">MADE BY: KHOLODNIY YURI</p>
+                    <select className="changeCurrentCurrency" onChange={(e) =>{
+                        this.props.changeCurrentCurrency(e);
+                    }}>
+                        <option value="USD">USD</option>
+                        <option value="UAH">UAH</option>
+                        <option value="EUR">EUR</option>
+                    </select>
                     <div className="BasketButton"  onClick={() => this.props.changeActiveBasket()} >
                         <img src={Basket} alt="Basket_Icon" className="BasketIcon" />
                         <div className={this.props.basketLengthAnim}>

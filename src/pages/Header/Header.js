@@ -34,6 +34,7 @@ class Header extends React.Component {
                             deleteFromBasket={this.props.deleteFromBasket}
                             basketLength={this.props.basketLength}
                             basketLengthAnim={this.state.basketLengthAnim}
+                            changeCurrentCurrency={this.props.changeCurrentCurrency}
                 />
             </>
         )
@@ -44,6 +45,7 @@ Header.propTypes = {
     changeActiveMenu: PropTypes.func,
     changeActiveBasket: PropTypes.func,
     deleteFromBasket: PropTypes.func,
+    changeCurrentCurrency: PropTypes.func,
     basketLength: PropTypes.number
 };
 

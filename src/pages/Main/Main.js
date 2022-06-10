@@ -12,15 +12,23 @@ class Main extends React.Component {
             <div className="main">
                 <FirstContainerContent />
                 <SecondContainerContent />
-                <BestSellers  addToBasket={this.props.addToBasket}/>
-                <ShopContent addToBasket={this.props.addToBasket}/>
+                <BestSellers  addToBasket={this.props.addToBasket}
+                              currentCurrency={this.props.currentCurrency}
+                              currentCurrencySign={this.props.currentCurrencySign}
+                />
+                <ShopContent addToBasket={this.props.addToBasket}
+                             currentCurrency={this.props.currentCurrency}
+                             currentCurrencySign={this.props.currentCurrencySign}
+                />
             </div>
         )
     }
 }
 
 Main.propTypes = {
-    addToBasket: PropTypes.func
+    addToBasket: PropTypes.func,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 }
 
 export default Main;

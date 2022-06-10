@@ -19,7 +19,11 @@ class Bestsellers extends React.Component {
                     <h1>ХОДОВИЙ ТОВАР</h1>
                 </div>
                 <div className="sellers-items" data-aos="fade-right" data-aos-anchor-placement="center-bottom">
-                    <ShopItemsList shopElements={this.ShopItemsData} addToBasket={this.props.addToBasket}/>
+                    <ShopItemsList shopElements={this.ShopItemsData}
+                                   addToBasket={this.props.addToBasket}
+                                   currentCurrency={this.props.currentCurrency}
+                                   currentCurrencySign={this.props.currentCurrencySign}
+                    />
                 </div>
             </div>
         )
@@ -27,7 +31,9 @@ class Bestsellers extends React.Component {
 }
 
 Bestsellers.propTypes = {
-    addToBasket: PropTypes.func
+    addToBasket: PropTypes.func,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 }
 
 export default Bestsellers;

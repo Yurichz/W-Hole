@@ -10,7 +10,12 @@ class App extends React.Component {
             activeMenu : false,
             activeBasket : false,
             basketProducts: [],
-            currentProduct: null
+            currentProduct: null,
+            exchangeRates: null,
+            currentCurrency: {
+                currency: "USD",
+                sign: "$"
+            }
         }
     }
     items = [{value: "Головна", href: '/main'},{value: "Каталог", href: '/catalog'},{value: "Про нас", href: '/aboutus'}];
@@ -68,6 +73,38 @@ class App extends React.Component {
         })
     }
 
+    changeCurrentCurrency = (e) =>{
+        let temp;
+        if(e.target.value === "USD"){
+            temp = "$";
+        }
+        if(e.target.value === "UAH"){
+            temp = "₴";
+        }
+        if(e.target.value === "EUR"){
+            temp = "€";
+        }
+        this.setState({currentCurrency: {
+                currency: e.target.value,
+                sign: temp
+            }})
+    }
+
+    getExchangeRates = async () => {
+        const response = await fetch("https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD");
+        const data = await response.json();
+        if(data.result === "success") {
+            this.setState({exchangeRates: data["conversion_rates"]});
+        }
+        else{
+            console.log("Error load data!");
+        }
+    }
+
+    componentDidMount() {
+        this.getExchangeRates()
+    }
+
     render() {
         return (
             <>
@@ -76,8 +113,11 @@ class App extends React.Component {
                     changeActiveBasket={this.changeActiveBasket}
                     deleteFromBasket={this.deleteFromBasket}
                     basketLength={this.state.basketProducts.length}
+                    changeCurrentCurrency={this.changeCurrentCurrency}
 
                     addToBasket={this.addToBasket}
+                    currentCurrency={this.state.exchangeRates ? +this.state.exchangeRates[this.state.currentCurrency.currency].toFixed(2) : 1}
+                    currentCurrencySign={this.state.currentCurrency.sign}
 
                     activeBasket={this.state.activeBasket}
                     basketProducts={this.state.basketProducts}
@@ -88,7 +128,6 @@ class App extends React.Component {
                     activeMenu={this.state.activeMenu}
                     headName={"Меню сайта"}
                     items={this.items}/>
-                />
             </>
         );
     }

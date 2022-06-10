@@ -14,7 +14,7 @@ class ShopItemCase extends Component {
                             </div>
                             <div className="shopItem-text">
                                 <h2>{this.props.element.Name}</h2>
-                                <h3>${this.props.element.Price}</h3>
+                                <h3>{`${(this.props.element.Price * this.props.currentCurrency).toFixed(2)} ${this.props.currentCurrencySign}`}</h3>
                             </div>
                         </a>
                     </div>
@@ -31,7 +31,9 @@ class ShopItemCase extends Component {
 
 ShopItemCase.propTypes = {
     addToBasket: PropTypes.func,
-    element: PropTypes.object
+    element: PropTypes.object,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 }
 
 export default ShopItemCase;

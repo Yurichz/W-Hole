@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import "./Basket.css";
 import BasketItemCase from "./BasketItemCase";
-import EmptyBasket from "./EmptyBasket.svg"
+import EmptyBasket from "../../../assets/EmptyBasket.svg";
 import PropTypes from "prop-types";
 
 class BasketView extends Component {
@@ -10,20 +10,23 @@ class BasketView extends Component {
                 <div className={this.props.active ? "Basket active" : "Basket"} onClick={() => this.props.changeActiveBasket()}>
                     <div className="BasketContent" onClick={s => s.stopPropagation()}>
                         {this.props.basketProducts.length ?
-                            this.props.basketProducts.map((element,i=-1) => {
-                                i++;
-                                return(
-                                    <div key={element.Details.Id} >
-                                        <BasketItemCase product={element}
-                                                        deleteFromBasket={this.props.deleteFromBasket}
-                                                        active={i === this.props.number}
-                                                        dragStartHandler={this.props.dragStartHandler}
-                                                        dragOverHandler={this.props.dragOverHandler}
-                                                        dragDropHandler={this.props.dragDropHandler}
-                                        />
-                                    </div>
-                                )
-                            }) :
+                                this.props.basketProducts.map((element,i=-1) => {
+                                    i++;
+                                    return(
+                                        <div key={element.Details.Id} >
+                                            <BasketItemCase product={element}
+                                                            deleteFromBasket={this.props.deleteFromBasket}
+                                                            active={i === this.props.number}
+                                                            dragStartHandler={this.props.dragStartHandler}
+                                                            dragOverHandler={this.props.dragOverHandler}
+                                                            dragDropHandler={this.props.dragDropHandler}
+                                                            currentCurrency={this.props.currentCurrency}
+                                                            currentCurrencySign={this.props.currentCurrencySign}
+                                            />
+                                        </div>
+                                    )
+                                })
+                            :
                             <div className="EmptyBasket">
                                 <img src={EmptyBasket} alt="EmptyBasket"/>
                                 <h1>У кошику нічного немає :(</h1>
@@ -43,7 +46,9 @@ BasketView.propTypes = {
     dragStartHandler: PropTypes.func,
     dragOverHandler: PropTypes.func,
     dragDropHandler: PropTypes.func,
-    number: PropTypes.number
+    number: PropTypes.number,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 };
 
 export default BasketView;

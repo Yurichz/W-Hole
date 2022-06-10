@@ -17,7 +17,7 @@ class BasketItemCase extends Component {
                         <h2>{this.props.product.Name}</h2>
                     </div>
                     <div className="BasketProductBoxInfo">
-                        <h2>${this.props.product.Price}</h2>
+                        <h2>{`${(this.props.product.Price * this.props.currentCurrency).toFixed(2)} ${this.props.currentCurrencySign}`}</h2>
                         <div className="DeleteIconFromBasket" onClick={() => this.props.deleteFromBasket(this.props.product.Details.Id)}>
                             <h3>X</h3>
                         </div>
@@ -34,7 +34,9 @@ BasketItemCase.propTypes = {
     active: PropTypes.bool,
     dragStartHandler: PropTypes.func,
     dragOverHandler: PropTypes.func,
-    dragDropHandler: PropTypes.func
+    dragDropHandler: PropTypes.func,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 }
 
 export default BasketItemCase;

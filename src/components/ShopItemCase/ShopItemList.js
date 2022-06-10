@@ -8,7 +8,10 @@ class ShopItemsList extends Component {
             <>
                 {this.props.shopElements.map(element => {
                     return(<div key={element.Details.Id}>
-                        <ShopItemCase element={element} addToBasket={this.props.addToBasket} />
+                        <ShopItemCase element={element} addToBasket={this.props.addToBasket}
+                                      currentCurrency={this.props.currentCurrency}
+                                      currentCurrencySign={this.props.currentCurrencySign}
+                        />
                     </div>)
                 })}
             </>
@@ -18,7 +21,9 @@ class ShopItemsList extends Component {
 
 ShopItemsList.propTypes = {
     addToBasket: PropTypes.func,
-    shopElements: PropTypes.array
+    shopElements: PropTypes.array,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 }
 
 export default ShopItemsList;

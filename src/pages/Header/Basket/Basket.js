@@ -53,12 +53,14 @@ class Basket extends Component {
             <>
                 <BasketView active={this.props.active}
                             changeActiveBasket={this.props.changeActiveBasket}
+                            currentCurrency={this.props.currentCurrency}
                             basketProducts={this.props.basketProducts}
                             deleteFromBasket={this.props.deleteFromBasket}
                             dragStartHandler={this.props.dragStartHandler}
                             dragOverHandler={this.props.dragOverHandler}
                             dragDropHandler={this.props.dragDropHandler}
                             number={this.state.number}
+                            currentCurrencySign={this.props.currentCurrencySign}
                 />
             </>
         );
@@ -72,7 +74,9 @@ Basket.propTypes = {
     deleteFromBasket: PropTypes.func,
     dragStartHandler: PropTypes.func,
     dragOverHandler: PropTypes.func,
-    dragDropHandler: PropTypes.func
+    dragDropHandler: PropTypes.func,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 };
 
 export default Basket;

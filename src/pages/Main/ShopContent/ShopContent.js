@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ShopItemsData from "../../../components/ShopItemCase/ShopItemData";
+import ShopItemsDatas from "../../../components/ShopItemCase/ShopItemData";
 import "./ShopContent.css"
 import AOS from "aos";
 import "aos/dist/aos.css"
@@ -12,7 +12,7 @@ class ShopContent extends Component {
         this.state = {
             sortSelector : "byId",
             shopFilters : [],
-            ShopItemsData : ShopItemsData.slice()
+            ShopItemsData : ShopItemsDatas.slice()
         }
     }
 
@@ -27,7 +27,7 @@ class ShopContent extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        if(nextState !== this.state){
+        if(nextState !== this.state || nextProps !== this.props){
             return true;
         } else {
             return false;
@@ -103,6 +103,8 @@ class ShopContent extends Component {
                     ShopItemsData={this.state.ShopItemsData}
                     checkInFilter={this.checkInFilter}
                     addToBasket={this.props.addToBasket}
+                    currentCurrency={this.props.currentCurrency}
+                    currentCurrencySign={this.props.currentCurrencySign}
                 />
             </>
         );
@@ -110,7 +112,9 @@ class ShopContent extends Component {
 }
 
 ShopContent.propTypes = {
-    addToBasket: PropTypes.func
+    addToBasket: PropTypes.func,
+    currentCurrency: PropTypes.number,
+    currentCurrencySign: PropTypes.string
 }
 
 export default ShopContent;

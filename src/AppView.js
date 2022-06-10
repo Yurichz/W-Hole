@@ -14,16 +14,22 @@ class AppView extends Component {
                         changeActiveBasket={this.props.changeActiveBasket}
                         deleteFromBasket={this.props.deleteFromBasket}
                         basketLength={this.props.basketLength}
+                        changeCurrentCurrency={this.props.changeCurrentCurrency}
                 />
-                <Main addToBasket={this.props.addToBasket}/>
+                <Main addToBasket={this.props.addToBasket}
+                      currentCurrency={this.props.currentCurrency}
+                      currentCurrencySign={this.props.currentCurrencySign}
+                />
                 <Footer />
                 <Basket active={this.props.activeBasket}
                         changeActiveBasket={this.props.changeActiveBasket}
+                        currentCurrency={this.props.currentCurrency}
                         basketProducts={this.props.basketProducts}
                         deleteFromBasket={this.props.deleteFromBasket}
                         dragStartHandler={this.props.dragStartHandler}
                         dragOverHandler={this.props.dragOverHandler}
                         dragDropHandler={this.props.dragDropHandler}
+                        currentCurrencySign={this.props.currentCurrencySign}
                 />
                 <Menu active={this.props.activeMenu}
                       changeActiveMenu={this.props.changeActiveMenu}
