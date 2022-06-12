@@ -1,37 +1,41 @@
-import React, {Component} from 'react';
-import "./ShopFilterCase.css"
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import './ShopFilterCase.css';
+import PropTypes from 'prop-types';
 
 class ShopFilterCase extends Component {
-    constructor() {
-        super();
-        this.state = {
-            active: false
-        }
+  constructor() {
+    super();
+    this.state = {
+      active: false
+    };
+  }
 
-    }
+  changeActive = () => {
+    this.setState((state) => ({
+      active: !state.active
+    }));
+  };
 
-    changeActive = () => {
-        this.setState(state => ({
-            active: !state.active
-        }))
-    }
-
-    render() {
-        return (
-            <div className={ this.state.active ? "FilterCase active" : "FilterCase"} onClick={()=> {
-                this.props.addOrRemoveToFilter(this.props.filter);
-                this.changeActive()
-            }}>
-                <h3>{this.props.filter}</h3>
-            </div>
-        );
-    }
+  render() {
+    const { active } = this.state;
+    const { addOrRemoveToFilter, filter } = this.props;
+    return (
+      <div
+        className={active ? 'FilterCase active' : 'FilterCase'}
+        onClick={() => {
+          addOrRemoveToFilter(filter);
+          this.changeActive();
+        }}
+      >
+        <h3>{filter}</h3>
+      </div>
+    );
+  }
 }
 
 ShopFilterCase.propTypes = {
-    filter: PropTypes.string,
-    addOrRemoveToFilter: PropTypes.func
-}
+  filter: PropTypes.string.isRequired,
+  addOrRemoveToFilter: PropTypes.func.isRequired
+};
 
 export default ShopFilterCase;

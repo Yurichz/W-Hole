@@ -1,120 +1,121 @@
-import React, {Component} from 'react';
-import ShopItemsDatas from "../../../components/ShopItemCase/ShopItemData";
-import "./ShopContent.css"
-import AOS from "aos";
-import "aos/dist/aos.css"
-import PropTypes from "prop-types";
-import ShopContentView from "./ShopContentView";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import AOS from 'aos';
+import ShopItemsDatas from '../../../components/ShopItemCase/ShopItemData';
+import './ShopContent.css';
+import 'aos/dist/aos.css';
+import ShopContentView from './ShopContentView';
 
 class ShopContent extends Component {
-    constructor() {
-        super();
-        this.state = {
-            sortSelector : "byId",
-            shopFilters : [],
-            ShopItemsData : ShopItemsDatas.slice()
+  constructor() {
+    super();
+    this.state = {
+      sortSelector: 'byId',
+      shopFilters: [],
+      ShopItemsData: ShopItemsDatas.slice()
+    };
+  }
+
+  componentDidMount() {
+    AOS.init({ duration: 800, once: true });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextState !== this.state || nextProps !== this.props) {
+      return true;
+    } 
+    return false;
+  }
+
+  componentDidUpdate(prevProps, prevState,) {
+    const { sortSelector } = this.state;
+    if (prevState.sortSelector !== sortSelector) {
+      this.sortBySelectedWithMethodSort();
+    }
+  }
+
+  changeSortSelector = (sort) => {
+    this.setState(() => ({
+      sortSelector: sort
+    }));
+  };
+
+  addOrRemoveToFilter = (filter) => {
+    const { shopFilters } = this.state;
+    this.setState((state) => {
+      if (!shopFilters.includes(filter)) {
+        return ({
+          shopFilters: [...state.shopFilters, filter]
+        });
+      } 
+      return ({
+        shopFilters: state.shopFilters.filter((item) => { return item !== filter; })
+      });
+    });
+  };
+
+  checkInFilter = (item) => {
+    const { shopFilters } = this.state;
+    for (let i = 0; i < shopFilters.length; i++) {
+      if (item.Details.Tags.includes(shopFilters[i])) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  sortBySelectedWithMethodSort = () => {
+    this.setState((state) => {
+      if (state.sortSelector === 'byId') {
+        return ({
+          ShopItemsData: state.ShopItemsData.sort((a, b) => a.Details.Id - b.Details.Id)
+        });
+      } if (state.sortSelector === 'byPrice') {
+        return ({
+          ShopItemsData: this.sortBySelectedMyMethod()
+        });
+      } 
+      return ({
+        ShopItemsData: state.ShopItemsData.sort((a, b) => b.Details.Purchase - a.Details.Purchase)
+      });
+    });
+  };
+
+  sortBySelectedMyMethod = () => {
+    const { ShopItemsData } = this.state;
+    const tempArr = ShopItemsData.slice();
+    for (let i = 0; i < tempArr.length - 1; i++) {
+      for (let j = 0; j < tempArr.length - (i + 1); j++) {
+        if (tempArr[j].Price > tempArr[j + 1].Price) {
+          [tempArr[j], tempArr[j + 1]] = [tempArr[j + 1], tempArr[j]];
         }
+      }
     }
+    return tempArr;
+  };
 
-    componentDidMount() {
-        AOS.init({ duration: 800, once: true});
-    }
-
-    componentDidUpdate(prevProps, prevState,){
-        if(prevState.sortSelector !== this.state.sortSelector){
-            this.sortBySelectedWithMethodSort();
-        }
-    }
-
-    shouldComponentUpdate(nextProps, nextState){
-        if(nextState !== this.state || nextProps !== this.props){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    changeSortSelector = (sort) =>{
-        this.setState(state =>({
-            sortSelector: sort
-        }));
-    }
-
-    addOrRemoveToFilter = (filter) =>{
-        this.setState((state) =>{
-            if(!this.state.shopFilters.includes(filter)){
-                return ({
-                    shopFilters: [...state.shopFilters, filter]
-                })
-            } else {
-                return ({
-                    shopFilters: state.shopFilters.filter((item) => {return item !== filter})
-                })
-            }
-        })
-    }
-
-    checkInFilter = (item) => {
-        for(let filter in this.state.shopFilters){
-            if(item.Details.Tags.includes(this.state.shopFilters[filter])){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    sortBySelectedWithMethodSort = () =>{
-            this.setState((state)=>{
-                if(state.sortSelector === "byId"){
-                    return({
-                        ShopItemsData: state.ShopItemsData.sort((a, b) => a.Details.Id - b.Details.Id)
-                    })
-                } else if (state.sortSelector === "byPrice"){
-                    return ({
-                        ShopItemsData: this.sortBySelectedMyMethod()
-                    })
-                } else {
-                    return({
-                        ShopItemsData: state.ShopItemsData.sort((a, b) => b.Details.Purchase - a.Details.Purchase)
-                    })
-                }
-            })
-    }
-
-    sortBySelectedMyMethod= () =>{
-        let tempArr = this.state.ShopItemsData.slice();
-        for (let i = 0; i < tempArr.length - 1; i++) {
-            for (let j = 0; j < tempArr.length - (i+1); j++) {
-                if (tempArr[j]["Price"] > tempArr[j+1]["Price"]){
-                    [tempArr[j], tempArr[j+1]] = [tempArr[j+1], tempArr[j]]
-                }
-            }
-        }
-        return tempArr
-    }
-
-    render() {
-        return (
-            <>
-                <ShopContentView
-                    changeSortSelector={this.changeSortSelector}
-                    addOrRemoveToFilter={this.addOrRemoveToFilter}
-                    shopFiltersLength={this.state.shopFilters.length}
-                    ShopItemsData={this.state.ShopItemsData}
-                    checkInFilter={this.checkInFilter}
-                    addToBasket={this.props.addToBasket}
-                    currentCurrency={this.props.currentCurrency}
-                    currentCurrencySign={this.props.currentCurrencySign}
-                />
-            </>
-        );
-    }
+  render() {
+    const { shopFilters, ShopItemsData } = this.state;
+    const { addToBasket, currentCurrency, currentCurrencySign } = this.props;
+    return (
+      <ShopContentView
+        changeSortSelector={this.changeSortSelector}
+        addOrRemoveToFilter={this.addOrRemoveToFilter}
+        shopFiltersLength={shopFilters.length}
+        ShopItemsData={ShopItemsData}
+        checkInFilter={this.checkInFilter}
+        addToBasket={addToBasket}
+        currentCurrency={currentCurrency}
+        currentCurrencySign={currentCurrencySign}
+      />
+    );
+  }
 }
 
 ShopContent.propTypes = {
-    addToBasket: PropTypes.func,
-    currentCurrency: PropTypes.number,
-    currentCurrencySign: PropTypes.string
-}
+  addToBasket: PropTypes.func.isRequired,
+  currentCurrency: PropTypes.number.isRequired,
+  currentCurrencySign: PropTypes.string.isRequired
+};
 
 export default ShopContent;

@@ -1,39 +1,46 @@
-import React, {Component} from 'react';
-import "./ShopItemCase.css"
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import './ShopItemCase.css';
+import PropTypes from 'prop-types';
 
 class ShopItemCase extends Component {
-    render() {
-        return (
-            <>
-                <div className="shopItemCase">
-                    <div className="shopItemInfo">
-                        <a href="/">
-                            <div>
-                                <img className="shopItem-images" src={this.props.element.Image} alt={this.props.element.Details.Alt} />
-                            </div>
-                            <div className="shopItem-text">
-                                <h2>{this.props.element.Name}</h2>
-                                <h3>{`${(this.props.element.Price * this.props.currentCurrency).toFixed(2)} ${this.props.currentCurrencySign}`}</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div className="btn" onClick={() => this.props.addToBasket(this.props.element)}>
-                        <h2>
-                            Купити
-                        </h2>
-                    </div>
-                </div>
-            </>
-        );
-    }
+  render() {
+    const {
+      addToBasket, element, currentCurrency, currentCurrencySign 
+    } = this.props;
+    return (
+      <div className="shopItemCase">
+        <div className="shopItemInfo">
+          <a href="/">
+            <div>
+              <img className="shopItem-images" src={element.Image} alt={element.Details.Alt} />
+            </div>
+            <div className="shopItem-text">
+              <h2>{element.Name}</h2>
+              <h3>
+                {`${(element.Price * currentCurrency).toFixed(2)}
+              ${currentCurrencySign}`}
+              </h3>
+            </div>
+          </a>
+        </div>
+        <div
+          className="btn"
+          onClick={() => addToBasket(element)}
+        >
+          <h2>
+            Купити
+          </h2>
+        </div>
+      </div>
+    );
+  }
 }
 
 ShopItemCase.propTypes = {
-    addToBasket: PropTypes.func,
-    element: PropTypes.object,
-    currentCurrency: PropTypes.number,
-    currentCurrencySign: PropTypes.string
-}
+  addToBasket: PropTypes.func.isRequired,
+  element: PropTypes.object.isRequired,
+  currentCurrency: PropTypes.number.isRequired,
+  currentCurrencySign: PropTypes.string.isRequired
+};
 
 export default ShopItemCase;

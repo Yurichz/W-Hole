@@ -1,29 +1,36 @@
-import React, {Component} from 'react';
-import ShopItemCase from "./ShopItemCase";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ShopItemCase from './ShopItemCase';
 
 class ShopItemsList extends Component {
-    render() {
-        return (
-            <>
-                {this.props.shopElements.map(element => {
-                    return(<div key={element.Details.Id}>
-                        <ShopItemCase element={element} addToBasket={this.props.addToBasket}
-                                      currentCurrency={this.props.currentCurrency}
-                                      currentCurrencySign={this.props.currentCurrencySign}
-                        />
-                    </div>)
-                })}
-            </>
-        );
-    }
+  render() {
+    const {
+      addToBasket, shopElements, currentCurrency, currentCurrencySign 
+    } = this.props;
+    return (
+      <>
+        {shopElements.map((element) => {
+          return (
+            <div key={element.Details.Id}>
+              <ShopItemCase
+                element={element}
+                addToBasket={addToBasket}
+                currentCurrency={currentCurrency}
+                currentCurrencySign={currentCurrencySign}
+              />
+            </div>
+          );
+        })}
+      </>
+    );
+  }
 }
 
 ShopItemsList.propTypes = {
-    addToBasket: PropTypes.func,
-    shopElements: PropTypes.array,
-    currentCurrency: PropTypes.number,
-    currentCurrencySign: PropTypes.string
-}
+  addToBasket: PropTypes.func.isRequired,
+  shopElements: PropTypes.array.isRequired,
+  currentCurrency: PropTypes.number.isRequired,
+  currentCurrencySign: PropTypes.string.isRequired
+};
 
 export default ShopItemsList;
