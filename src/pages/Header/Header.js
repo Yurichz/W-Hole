@@ -6,12 +6,13 @@ class Header extends React.Component {
     constructor() {
         super();
         this.state = {
-            basketLengthAnim: "basketLength"
+            basketLengthAnim: "basketLength",
+            exchangeRates: []
         }
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        if(nextState.basketLengthAnim !== this.state.basketLengthAnim || nextProps.basketLength !== this.props.basketLength){
+        if(nextState !== this.state || nextProps.basketLength !== this.props.basketLength){
             if(nextProps.basketLength !== this.props.basketLength){
                 this.setState((state) => {
                     return {basketLengthAnim: "basketLength anim"}
@@ -25,6 +26,20 @@ class Header extends React.Component {
             return false;
         }
     }
+    getExchangeRates = async () => {
+        const response = await fetch("https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD");
+        const data = await response.json();
+        if(data.result === "success") {
+            this.setState({exchangeRates: data["conversion_rates"]});
+        }
+        else{
+            console.log("Error load data!");
+        }
+    }
+
+    componentDidMount() {
+        this.getExchangeRates();
+    }
 
     render() {
         return (
@@ -35,6 +50,7 @@ class Header extends React.Component {
                             basketLength={this.props.basketLength}
                             basketLengthAnim={this.state.basketLengthAnim}
                             changeCurrentCurrency={this.props.changeCurrentCurrency}
+                            exchangeRates={this.state.exchangeRates}
                 />
             </>
         )

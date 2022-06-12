@@ -20,11 +20,13 @@ class HeaderView extends Component {
                 </div>
                 <div className="BasketName">
                     <select className="changeCurrentCurrency" onChange={(e) =>{
-                        this.props.changeCurrentCurrency(e);
+                        this.props.changeCurrentCurrency(e.target.value, this.props.exchangeRates[e.target.value]);
                     }}>
-                        <option value="USD">USD</option>
-                        <option value="UAH">UAH</option>
-                        <option value="EUR">EUR</option>
+                        {Object.keys(this.props.exchangeRates).map((key) => {
+                                return (
+                                    <option key={key} value={key}>{key}</option>
+                                )
+                            })}
                     </select>
                     <div className="BasketButton"  onClick={() => this.props.changeActiveBasket()} >
                         <img src={Basket} alt="Basket_Icon" className="BasketIcon" />
@@ -43,7 +45,8 @@ HeaderView.propTypes = {
     changeActiveBasket: PropTypes.func,
     deleteFromBasket: PropTypes.func,
     basketLength: PropTypes.number,
-    basketLengthAnim: PropTypes.string
+    basketLengthAnim: PropTypes.string,
+    exchangeRates: PropTypes.object
 };
 
 export default HeaderView;

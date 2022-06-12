@@ -19,6 +19,7 @@ class App extends React.Component {
         }
     }
     items = [{value: "Головна", href: '/main'},{value: "Каталог", href: '/catalog'},{value: "Про нас", href: '/aboutus'}];
+
     changeActiveMenu= () =>{
         this.setState(state => ({
             activeMenu: !state.activeMenu
@@ -73,36 +74,26 @@ class App extends React.Component {
         })
     }
 
-    changeCurrentCurrency = (e) =>{
+    changeCurrentCurrency = (e, exchangeRates) =>{
         let temp;
-        if(e.target.value === "USD"){
+        if(e === "USD"){
             temp = "$";
         }
-        if(e.target.value === "UAH"){
+        else if(e === "UAH"){
             temp = "₴";
         }
-        if(e.target.value === "EUR"){
+        else if(e === "EUR"){
             temp = "€";
         }
+        else {
+            temp = e
+        }
         this.setState({currentCurrency: {
-                currency: e.target.value,
+                currency: e,
                 sign: temp
-            }})
-    }
-
-    getExchangeRates = async () => {
-        const response = await fetch("https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD");
-        const data = await response.json();
-        if(data.result === "success") {
-            this.setState({exchangeRates: data["conversion_rates"]});
-        }
-        else{
-            console.log("Error load data!");
-        }
-    }
-
-    componentDidMount() {
-        this.getExchangeRates()
+            },
+            exchangeRates: exchangeRates
+        })
     }
 
     render() {
@@ -114,9 +105,10 @@ class App extends React.Component {
                     deleteFromBasket={this.deleteFromBasket}
                     basketLength={this.state.basketProducts.length}
                     changeCurrentCurrency={this.changeCurrentCurrency}
+                    changeExchangeRates={this.changeExchangeRates}
 
                     addToBasket={this.addToBasket}
-                    currentCurrency={this.state.exchangeRates ? +this.state.exchangeRates[this.state.currentCurrency.currency].toFixed(2) : 1}
+                    currentCurrency={this.state.exchangeRates ? +this.state.exchangeRates.toFixed(2) : 1}
                     currentCurrencySign={this.state.currentCurrency.sign}
 
                     activeBasket={this.state.activeBasket}
