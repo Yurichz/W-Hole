@@ -15,21 +15,21 @@ class Header extends React.Component {
     this.getExchangeRates();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  componentDidUpdate(prevProps, prevState) {
     const { basketLength } = this.props;
-    if (nextState !== this.state || nextProps.basketLength !== basketLength) {
-      if (nextProps.basketLength !== basketLength) {
+    if (prevState !== this.state || prevProps.basketLength !== basketLength) {
+      if (prevProps.basketLength !== basketLength) {
         this.setState(() => {
           return { basketLengthAnim: 'basketLength anim' };
         });
         setTimeout(() => {
           return this.setState(() => {
             return { basketLengthAnim: 'basketLength' };
-          }); 
+          });
         }, 100);
       }
       return true;
-    } 
+    }
     return false;
   }
 

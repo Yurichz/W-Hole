@@ -22,28 +22,14 @@ class Basket extends Component {
     const { active, basketProducts } = this.props;
     if (active) {
       if (e.key === 'ArrowDown') {
-        this.setState((state) => {
-          if (state.number < basketProducts.length) {
-            return ({
-              number: state.number + 1
-            });
-          }
-          return ({
-            number: 0
-          });
-        });
+        this.setState(({ number }) => ({
+          number: number < basketProducts.length ? number + 1 : 0
+        }));
       }
       if (e.key === 'ArrowUp') {
-        this.setState((state) => {
-          if (state.number) {
-            return ({
-              number: state.number - 1
-            });
-          }
-          return ({
-            number: basketProducts.length
-          });
-        });
+        this.setState(({ number }) => ({
+          number: number ? number - 1 : basketProducts.length
+        }));
       }
     }
   };

@@ -11,8 +11,8 @@ class ShopFilterCase extends Component {
   }
 
   changeActive = () => {
-    this.setState((state) => ({
-      active: !state.active
+    this.setState(({ active }) => ({
+      active: !active
     }));
   };
 

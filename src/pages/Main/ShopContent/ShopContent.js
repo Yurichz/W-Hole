@@ -41,16 +41,15 @@ class ShopContent extends Component {
   };
 
   addOrRemoveToFilter = (filter) => {
-    const { shopFilters } = this.state;
-    this.setState((state) => {
+    this.setState(({ shopFilters }) => {
       if (!shopFilters.includes(filter)) {
-        return ({
-          shopFilters: [...state.shopFilters, filter]
-        });
-      } 
-      return ({
-        shopFilters: state.shopFilters.filter((item) => { return item !== filter; })
-      });
+        return {
+          shopFilters: [...shopFilters, filter]
+        };
+      }
+      return {
+        shopFilters: shopFilters.filter((item) => { return item !== filter; })
+      };
     });
   };
 
@@ -65,19 +64,14 @@ class ShopContent extends Component {
   };
 
   sortBySelectedWithMethodSort = () => {
-    this.setState((state) => {
-      if (state.sortSelector === 'byId') {
-        return ({
-          ShopItemsData: state.ShopItemsData.sort((a, b) => a.Details.Id - b.Details.Id)
-        });
-      } if (state.sortSelector === 'byPrice') {
-        return ({
-          ShopItemsData: this.sortBySelectedMyMethod()
-        });
-      } 
-      return ({
-        ShopItemsData: state.ShopItemsData.sort((a, b) => b.Details.Purchase - a.Details.Purchase)
-      });
+    this.setState(({ sortSelector, ShopItemsData }) => {
+      if (sortSelector === 'byId') {
+        return { ShopItemsData: [...ShopItemsData].sort((a, b) => a.Details.Id - b.Details.Id) };
+      }
+      if (sortSelector === 'byPrice') {
+        return { ShopItemsData: this.sortBySelectedMyMethod() };
+      }
+      return { ShopItemsData: [...ShopItemsData].sort((a, b) => b.Details.Purchase - a.Details.Purchase) };
     });
   };
 
