@@ -37,14 +37,14 @@ class Basket extends Component {
   render() {
     const { number } = this.state;
     const {
-      active, changeActiveBasket, basketProducts, deleteFromBasket,
+      active, changeActive, basketProducts, deleteFromBasket,
       dragStartHandler, dragOverHandler, dragDropHandler,
       currentCurrency, currentCurrencySign 
     } = this.props;
     return (
       <BasketView
         active={active}
-        changeActiveBasket={changeActiveBasket}
+        changeActive={changeActive}
         currentCurrency={currentCurrency}
         basketProducts={basketProducts}
         deleteFromBasket={deleteFromBasket}
@@ -60,7 +60,7 @@ class Basket extends Component {
 
 Basket.propTypes = {
   active: PropTypes.bool.isRequired,
-  changeActiveBasket: PropTypes.func.isRequired,
+  changeActive: PropTypes.func.isRequired,
   basketProducts: PropTypes.array.isRequired,
   deleteFromBasket: PropTypes.func.isRequired,
   dragStartHandler: PropTypes.func.isRequired,

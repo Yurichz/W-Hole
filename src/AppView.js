@@ -32,7 +32,7 @@ class AppView extends Component {
         <Footer />
         <Basket
           active={activeBasket}
-          changeActiveBasket={changeActiveBasket}
+          changeActive={changeActiveBasket}
           currentCurrency={currentCurrency}
           basketProducts={basketProducts}
           deleteFromBasket={deleteFromBasket}
@@ -43,7 +43,7 @@ class AppView extends Component {
         />
         <Menu
           active={activeMenu}
-          changeActiveMenu={changeActiveMenu}
+          changeActive={changeActiveMenu}
           headName="Меню сайта"
           items={items}
         />

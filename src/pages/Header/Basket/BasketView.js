@@ -1,58 +1,52 @@
 import React, { Component } from 'react';
 import './Basket.css';
 import PropTypes from 'prop-types';
+import withModal from '../../../HOC/withModal/withModal';
 import BasketItemCase from './BasketItemCase';
 import EmptyBasket from '../../../assets/EmptyBasket.svg';
 
 class BasketView extends Component {
   render() {
     const {
-      active, changeActiveBasket, basketProducts, deleteFromBasket,
+      basketProducts, deleteFromBasket,
       dragStartHandler, dragOverHandler, dragDropHandler,
       number, currentCurrency, currentCurrencySign 
     } = this.props;
     return (
       <div
-        className={active ? 'Basket active' : 'Basket'}
-        onClick={() => changeActiveBasket()}
+        className="BasketContent"
+        onClick={(s) => s.stopPropagation()}
       >
-        <div
-          className="BasketContent"
-          onClick={(s) => s.stopPropagation()}
-        >
-          {basketProducts.length
-            ? basketProducts.map((element, i = -1) => {
-              i += 1;
-              return (
-                <div key={element.Details.Id}>
-                  <BasketItemCase
-                    product={element}
-                    deleteFromBasket={deleteFromBasket}
-                    active={i === number}
-                    dragStartHandler={dragStartHandler}
-                    dragOverHandler={dragOverHandler}
-                    dragDropHandler={dragDropHandler}
-                    currentCurrency={currentCurrency}
-                    currentCurrencySign={currentCurrencySign}
-                  />
-                </div>
-              );
-            })
-            : (
-              <div className="EmptyBasket">
-                <img src={EmptyBasket} alt="EmptyBasket" />
-                <h1>У кошику нічного немає :(</h1>
+        {basketProducts.length
+          ? basketProducts.map((element, i = -1) => {
+            i += 1;
+            return (
+              <div key={element.Details.Id}>
+                <BasketItemCase
+                  product={element}
+                  deleteFromBasket={deleteFromBasket}
+                  active={i === number}
+                  dragStartHandler={dragStartHandler}
+                  dragOverHandler={dragOverHandler}
+                  dragDropHandler={dragDropHandler}
+                  currentCurrency={currentCurrency}
+                  currentCurrencySign={currentCurrencySign}
+                />
               </div>
-            )}
-        </div>
+            );
+          })
+          : (
+            <div className="EmptyBasket">
+              <img src={EmptyBasket} alt="EmptyBasket" />
+              <h1>У кошику нічного немає :(</h1>
+            </div>
+          )}
       </div>
     );
   }
 }
 
 BasketView.propTypes = {
-  active: PropTypes.bool.isRequired,
-  changeActiveBasket: PropTypes.func.isRequired,
   basketProducts: PropTypes.array.isRequired,
   deleteFromBasket: PropTypes.func.isRequired,
   dragStartHandler: PropTypes.func.isRequired,
@@ -63,4 +57,4 @@ BasketView.propTypes = {
   currentCurrencySign: PropTypes.string.isRequired
 };
 
-export default BasketView;
+export default withModal(BasketView);

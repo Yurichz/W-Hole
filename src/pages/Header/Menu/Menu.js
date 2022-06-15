@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 class Menu extends React.Component {
   render() {
     const {
-      active, changeActiveMenu, headName, items 
+      active, changeActive, headName, items
     } = this.props;
     return (
       <div
         className={active ? 'menu active' : 'menu'}
-        onClick={() => changeActiveMenu()}
+        onClick={() => changeActive()}
       >
         <div className="blur" />
         <div
@@ -41,7 +41,7 @@ class Menu extends React.Component {
 
 Menu.propTypes = {
   active: PropTypes.bool.isRequired,
-  changeActiveMenu: PropTypes.func.isRequired,
+  changeActive: PropTypes.func.isRequired,
   headName: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired
 };
