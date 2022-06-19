@@ -8,8 +8,7 @@
 .message{
     padding: 55px 25px 23px;
     background: white;
-    width: 426px;
-    height: 400px;
+    height: 420px;
     border-radius: 50px;
     box-shadow:  20px 20px 60px #d9d9d9,
     -20px -20px 60px #ffffff;
@@ -17,18 +16,11 @@
 .message h1 {
     margin-bottom: 20px;
 }
-.img{
+.CatalogGridButtons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 5%;
     padding-top: 20px;
-}
-.Li-Images{
-    display:inline-block;
-    padding-right: 58px;
-    padding-bottom: 30px;
-}
-.Li-Images2{
-    display:inline-block;
-    padding-right: 70px;
-    padding-bottom: 30px;
 }
 .prev_image{
     height: 75px;
@@ -48,6 +40,24 @@
     box-shadow:  20px 20px 60px #b6b6b6,
     -20px -20px 60px #ffffff;
 }
-.PCImage{
+@media (max-width: 1200px){
+    .PCImage{
+        width: 500px;
+    }
+}
+@media (max-width: 992px){
+    .PCImage{
+        width: 300px;
+    }
+}
+@media (max-width: 767px){
+    .PCImage{
+        display: none;
+    }
+}
+.PCImageCase{
     padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

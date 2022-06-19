@@ -49,3 +49,9 @@
 .btn:hover{
     background: #81088d;
 }
+@media (max-width: 400px){
+    .shopItem-images{
+        width: 200px;
+        height: auto;
+    }
+}

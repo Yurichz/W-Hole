@@ -1,13 +1,13 @@
 .SecondContent{
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 .SiteInfo{
     background: white;
-    width: 1190px;
-    height: 106px;
     display: flex;
     margin-left: 50px;
+    padding-right: 5%;
     border-radius: 50px;
     box-shadow: inset 20px 20px 60px #bebebe,
     inset -20px -20px 60px #ffffff;

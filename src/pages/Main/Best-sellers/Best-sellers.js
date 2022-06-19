@@ -21,7 +21,7 @@ class Bestsellers extends React.Component {
           <h1>ХОДОВИЙ ТОВАР</h1>
         </div>
         <div className="sellers-items-case">
-          <div className="sellers-items" data-aos="fade-right" data-aos-anchor-placement="center-bottom">
+          <div className="sellers-items" data-aos="fade-right">
             <ShopItemsList
               shopElements={this.ShopItemsData}
               addToBasket={addToBasket}

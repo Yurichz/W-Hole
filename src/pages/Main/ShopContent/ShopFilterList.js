@@ -10,7 +10,7 @@ class ShopFilterList extends Component {
     const { addOrRemoveToFilter } = this.props;
     return (
       <div className="ShopFilterList">
-        <h2 className="FilterText">Фільтри:</h2>
+        <h2>Фільтри:</h2>
         <div className="FilterItems">
           {this.filterList.map((item) => {
             return (

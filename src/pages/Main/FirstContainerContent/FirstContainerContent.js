@@ -18,44 +18,43 @@ class FirstContainerContent extends React.PureComponent {
             <h2>ЯКИЙ ДОПОМОЖЕ ТОБІ</h2>
             <h2>ПІДІБРАТИ ПК</h2>
             <h3>Каталог:</h3>
-            <div className="img">
-              <ul>
-                <li className="Li-Images">
-                  <a href="/src/pages">
-                    <img className="prev_image" src={RTX} alt="RTX" />
-                  </a>
-                </li>
-                <li className="Li-Images">
-                  <a href="/src/pages">
-                    <img className="prev_image" src={Intel} alt="Intel" />
-                  </a>
-                </li>
-                <li className="Li-Images">
-                  <a href="/src/pages">
-                    <img className="prev_image" src={RAM} alt="RAM" />
-                  </a>
-                </li>
-                <li className="Li-Images2">
-                  <a href="/src/pages">
-                    <img className="prev_image" src={MBoard} alt="Board" />
-                  </a>
-                </li>
-                <li className="Li-Images2">
-                  <a href="/src/pages">
-                    <img className="prev_image" src={Frame} alt="frame" />
-                  </a>
-                </li>
-                <li className="Li-Images2">
-                  <a href="/src/pages">
-                    <img className="prev_image" src={Power} alt="power" />
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ul className="CatalogGridButtons">
+              <li className="Li-Images">
+                <a href="/src/pages">
+                  <img className="prev_image" src={RTX} alt="RTX" />
+                </a>
+              </li>
+              <li className="Li-Images">
+                <a href="/src/pages">
+                  <img className="prev_image" src={Intel} alt="Intel" />
+                </a>
+              </li>
+              <li className="Li-Images">
+                <a href="/src/pages">
+                  <img className="prev_image" src={RAM} alt="RAM" />
+                </a>
+              </li>
+              <li className="Li-Images2">
+                <a href="/src/pages">
+                  <img className="prev_image" src={MBoard} alt="Board" />
+                </a>
+              </li>
+              <li className="Li-Images2">
+                <a href="/src/pages">
+                  <img className="prev_image" src={Frame} alt="frame" />
+                </a>
+              </li>
+              <li className="Li-Images2">
+                <a href="/src/pages">
+                  <img className="prev_image" src={Power} alt="power" />
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div className="PCImage">
+        <div className="PCImageCase">
           <img
+            className="PCImage"
             src={Computer}
             alt="Gamer_PC"
             onLoad={() => console.log('Image computer.png is loaded')}

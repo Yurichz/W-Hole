@@ -17,6 +17,7 @@
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 10px;
+    overflow-x: hidden;
 }
 .shopContentInfo{
     display: flex;
@@ -36,4 +37,30 @@
     padding: 5px 10px;
     line-height: 1.4;
     justify-content: space-between;
+}
+@media (max-width: 1100px) {
+    .shopItems {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 992px){
+    .shopItems {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px){
+    .shopItems {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .shopContent h1 {
+        color: white;
+        padding-bottom: 50px;
+        font-size: 38px;
+    }
+    .shopItemsAndFilters{
+        grid-template-columns: 30% 70%;
+    }
 }

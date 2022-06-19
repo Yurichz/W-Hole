@@ -12,7 +12,7 @@ header{
 }
 .LogoAndName{
     display: flex;
-    margin-left: 100px;
+    margin-left: 5%;
 }
 .SiteName{
     color: white;
@@ -25,7 +25,7 @@ header{
 }
 .BasketName{
     position: absolute;
-    right: 146px;
+    right: 7%;
     display: flex;
     height: 70px;
 }
