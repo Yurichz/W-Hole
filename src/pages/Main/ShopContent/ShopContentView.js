@@ -28,7 +28,7 @@ class ShopContentView extends Component {
         </div>
         <div className="shopItemsAndFilters">
           <ShopFilterList addOrRemoveToFilter={addOrRemoveToFilter} />
-          <div className="shopItems" data-aos="fade-left">
+          <div className="shopItems" data-aos="fade-right">
             <ShopItemsList
               shopElements={shopFiltersLength
                 ? ShopItemsData.filter((item) => checkInFilter(item))

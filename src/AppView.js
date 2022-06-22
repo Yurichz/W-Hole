@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from './pages/Header/Header';
+import Header from './components/Header/Header';
 import Main from './pages/Main/Main';
-import Footer from './pages/Footer/Footer';
-import Basket from './pages/Header/Basket/Basket';
-import Menu from './pages/Header/Menu/Menu';
+import Footer from './components/Footer/Footer';
+import Basket from './components/Header/Basket/Basket';
+import Menu from './components/Header/Menu/Menu';
 import './App.css';
 
 class AppView extends Component {

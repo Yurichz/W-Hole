@@ -16,4 +16,5 @@
     opacity: 1;
     transition: 0.3s;
     pointer-events: all;
+    overflow-y: scroll;
 }

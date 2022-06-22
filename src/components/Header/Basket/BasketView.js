@@ -21,18 +21,17 @@ class BasketView extends Component {
           ? basketProducts.map((element, i = -1) => {
             i += 1;
             return (
-              <div key={element.Details.Id}>
-                <BasketItemCase
-                  product={element}
-                  deleteFromBasket={deleteFromBasket}
-                  active={i === number}
-                  dragStartHandler={dragStartHandler}
-                  dragOverHandler={dragOverHandler}
-                  dragDropHandler={dragDropHandler}
-                  currentCurrency={currentCurrency}
-                  currentCurrencySign={currentCurrencySign}
-                />
-              </div>
+              <BasketItemCase
+                key={element.Details.Id}
+                product={element}
+                deleteFromBasket={deleteFromBasket}
+                active={i === number}
+                dragStartHandler={dragStartHandler}
+                dragOverHandler={dragOverHandler}
+                dragDropHandler={dragDropHandler}
+                currentCurrency={currentCurrency}
+                currentCurrencySign={currentCurrencySign}
+              />
             );
           })
           : (

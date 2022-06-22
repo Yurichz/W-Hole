@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import AOS from 'aos';
 import ShopItemsDatas from '../../../components/ShopItemCase/ShopItemData';
@@ -6,7 +6,7 @@ import './ShopContent.css';
 import 'aos/dist/aos.css';
 import ShopContentView from './ShopContentView';
 
-class ShopContent extends Component {
+class ShopContent extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -18,13 +18,6 @@ class ShopContent extends Component {
 
   componentDidMount() {
     AOS.init({ duration: 800, once: true });
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextState !== this.state || nextProps !== this.props) {
-      return true;
-    } 
-    return false;
   }
 
   componentDidUpdate(prevProps, prevState,) {
@@ -48,7 +41,7 @@ class ShopContent extends Component {
         };
       }
       return {
-        shopFilters: shopFilters.filter((item) => { return item !== filter; })
+        shopFilters: shopFilters.filter((item) => item !== filter)
       };
     });
   };
