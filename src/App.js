@@ -1,5 +1,6 @@
 import React from 'react';
 import AppView from './AppView';
+import BaseContext from './context/BaseContext';
 
 class App extends React.Component {
   items = [{ value: 'Головна', href: '/main' }, { value: 'Каталог', href: '/catalog' },
@@ -12,6 +13,7 @@ class App extends React.Component {
       activeBasket: false,
       basketProducts: [],
       currentProduct: null,
+      currentDragProduct: null,
       exchangeRates: null,
       currentCurrency: {
         currency: 'USD',
@@ -52,7 +54,7 @@ class App extends React.Component {
   };
 
   dragStartHandler = (e, product) => {
-    this.setState({ currentProduct: product });
+    this.setState({ currentDragProduct: product });
   };
 
   dragOverHandler = (e) => {
@@ -65,9 +67,9 @@ class App extends React.Component {
       return {
         basketProducts: state.basketProducts.map((s) => {
           if (s.Details.Id === product.Details.Id) {
-            return state.currentProduct;
+            return state.currentDragProduct;
           }
-          if (s.Details.Id === state.currentProduct.Details.Id) {
+          if (s.Details.Id === state.currentDragProduct.Details.Id) {
             return product;
           }
           return s;
@@ -96,31 +98,39 @@ class App extends React.Component {
     });
   };
 
+  setCurrentProduct = (product) => {
+    this.setState({ currentProduct: product });
+  };
+
   render() {
     const {
       basketProducts, changeExchangeRates, exchangeRates, currentCurrency,
-      activeBasket, activeMenu 
+      activeBasket, activeMenu, currentProduct
     } = this.state;
+    const { addToBasket, deleteFromBasket, setCurrentProduct } = this;
     return (
-      <AppView
-        changeActiveMenu={this.changeActiveMenu}
-        changeActiveBasket={this.changeActiveBasket}
-        deleteFromBasket={this.deleteFromBasket}
-        basketLength={basketProducts.length}
-        changeCurrentCurrency={this.changeCurrentCurrency}
-        changeExchangeRates={changeExchangeRates}
-        addToBasket={this.addToBasket}
-        currentCurrency={exchangeRates ? +exchangeRates.toFixed(2) : 1}
-        currentCurrencySign={currentCurrency.sign}
-        activeBasket={activeBasket}
-        basketProducts={basketProducts}
-        dragStartHandler={this.dragStartHandler}
-        dragOverHandler={this.dragOverHandler}
-        dragDropHandler={this.dragDropHandler}
-        activeMenu={activeMenu}
-        headName="Меню сайта"
-        items={this.items}
-      />
+      <BaseContext.Provider value={{
+        basketProducts, addToBasket, deleteFromBasket, setCurrentProduct 
+      }}
+      >
+        <AppView
+          changeActiveMenu={this.changeActiveMenu}
+          changeActiveBasket={this.changeActiveBasket}
+          basketLength={basketProducts.length}
+          changeCurrentCurrency={this.changeCurrentCurrency}
+          changeExchangeRates={changeExchangeRates}
+          currentProduct={currentProduct}
+          currentCurrency={exchangeRates ? +exchangeRates.toFixed(2) : 1}
+          currentCurrencySign={currentCurrency.sign}
+          activeBasket={activeBasket}
+          dragStartHandler={this.dragStartHandler}
+          dragOverHandler={this.dragOverHandler}
+          dragDropHandler={this.dragDropHandler}
+          activeMenu={activeMenu}
+          headName="Меню сайта"
+          items={this.items}
+        />
+      </BaseContext.Provider>
     );
   }
 }

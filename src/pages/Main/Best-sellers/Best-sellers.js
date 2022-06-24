@@ -14,7 +14,7 @@ class Bestsellers extends React.Component {
   }
 
   render() {
-    const { addToBasket, currentCurrency, currentCurrencySign } = this.props;
+    const { currentCurrency, currentCurrencySign } = this.props;
     return (
       <div className="Best-sellers">
         <div className="Sellers-Name" data-aos="fade-up">
@@ -24,7 +24,6 @@ class Bestsellers extends React.Component {
           <div className="sellers-items" data-aos="fade-right">
             <ShopItemsList
               shopElements={this.ShopItemsData}
-              addToBasket={addToBasket}
               currentCurrency={currentCurrency}
               currentCurrencySign={currentCurrencySign}
             />
@@ -38,7 +37,6 @@ class Bestsellers extends React.Component {
 Bestsellers.propTypes = {
   currentCurrency: PropTypes.number.isRequired,
   currentCurrencySign: PropTypes.string.isRequired,
-  addToBasket: PropTypes.func.isRequired
 };
 
 export default Bestsellers;

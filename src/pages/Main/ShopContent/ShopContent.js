@@ -83,7 +83,7 @@ class ShopContent extends PureComponent {
 
   render() {
     const { shopFilters, ShopItemsData } = this.state;
-    const { addToBasket, currentCurrency, currentCurrencySign } = this.props;
+    const { currentCurrency, currentCurrencySign } = this.props;
     return (
       <ShopContentView
         changeSortSelector={this.changeSortSelector}
@@ -91,7 +91,6 @@ class ShopContent extends PureComponent {
         shopFiltersLength={shopFilters.length}
         ShopItemsData={ShopItemsData}
         checkInFilter={this.checkInFilter}
-        addToBasket={addToBasket}
         currentCurrency={currentCurrency}
         currentCurrencySign={currentCurrencySign}
       />
@@ -100,7 +99,6 @@ class ShopContent extends PureComponent {
 }
 
 ShopContent.propTypes = {
-  addToBasket: PropTypes.func.isRequired,
   currentCurrency: PropTypes.number.isRequired,
   currentCurrencySign: PropTypes.string.isRequired
 };

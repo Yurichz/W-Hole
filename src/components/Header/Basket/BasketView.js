@@ -8,7 +8,7 @@ import EmptyBasket from '../../../assets/EmptyBasket.svg';
 class BasketView extends Component {
   render() {
     const {
-      basketProducts, deleteFromBasket,
+      deleteFromBasket, basketProducts,
       dragStartHandler, dragOverHandler, dragDropHandler,
       number, currentCurrency, currentCurrencySign 
     } = this.props;
@@ -46,14 +46,14 @@ class BasketView extends Component {
 }
 
 BasketView.propTypes = {
-  basketProducts: PropTypes.array.isRequired,
   deleteFromBasket: PropTypes.func.isRequired,
   dragStartHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,
   dragDropHandler: PropTypes.func.isRequired,
   number: PropTypes.number.isRequired,
   currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
+  currentCurrencySign: PropTypes.string.isRequired,
+  basketProducts: PropTypes.array.isRequired,
 };
 
 export default withModal(BasketView);

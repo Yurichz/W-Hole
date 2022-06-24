@@ -14,7 +14,7 @@ header{
     display: flex;
     margin-left: 5%;
 }
-.SiteName{
+.LogoAndName p {
     color: white;
     font-weight: 700;
     font-size: 36px;

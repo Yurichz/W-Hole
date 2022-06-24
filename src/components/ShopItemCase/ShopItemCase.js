@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import './ShopItemCase.css';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
+import BaseContext from '../../context/BaseContext';
 
 class ShopItemCase extends Component {
+  handleClick = () => {
+    const Context = this.context;
+    const { element } = this.props;
+    Context.setCurrentProduct(element);
+  };
+
   render() {
     const {
-      addToBasket, element, currentCurrency, currentCurrencySign 
+      element, currentCurrency, currentCurrencySign
     } = this.props;
     return (
-      <div className="shopItemCase">
-        <div className="shopItemInfo">
-          <a href="/">
+      <div
+        className="shopItemCase"
+        onClick={this.handleClick}
+      >
+        <Link to={`/product/${element.Name}`}>
+          <div className="shopItemInfo">
             <div>
               <img className="shopItem-images" src={element.Image} alt={element.Details.Alt} />
             </div>
@@ -21,26 +33,20 @@ class ShopItemCase extends Component {
               ${currentCurrencySign}`}
               </h3>
             </div>
-          </a>
-        </div>
-        <div
-          className="btn"
-          onClick={() => addToBasket(element)}
-        >
-          <h2>
-            Купити
-          </h2>
-        </div>
+          </div>
+        </Link>
+        <Button item={element} />
       </div>
     );
   }
 }
 
+ShopItemCase.contextType = BaseContext;
+
 ShopItemCase.propTypes = {
-  addToBasket: PropTypes.func.isRequired,
   element: PropTypes.object.isRequired,
   currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
+  currentCurrencySign: PropTypes.string.isRequired,
 };
 
 export default ShopItemCase;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BasketView from './BasketView';
+import BaseContext from '../../../context/BaseContext';
 
 class Basket extends Component {
   constructor() {
@@ -19,16 +20,17 @@ class Basket extends Component {
   }
 
   targetOnKeyDown = (e) => {
-    const { active, basketProducts } = this.props;
+    const { active } = this.props;
+    const Context = this.context;
     if (active) {
       if (e.key === 'ArrowDown') {
         this.setState(({ number }) => ({
-          number: number < basketProducts.length ? number + 1 : 0
+          number: number < Context.basketProducts.length ? number + 1 : 0
         }));
       }
       if (e.key === 'ArrowUp') {
         this.setState(({ number }) => ({
-          number: number ? number - 1 : basketProducts.length
+          number: number ? number - 1 : Context.basketProducts.length
         }));
       }
     }
@@ -37,17 +39,18 @@ class Basket extends Component {
   render() {
     const { number } = this.state;
     const {
-      active, changeActive, basketProducts, deleteFromBasket,
+      active, changeActive,
       dragStartHandler, dragOverHandler, dragDropHandler,
       currentCurrency, currentCurrencySign 
     } = this.props;
+    const Context = this.context;
     return (
       <BasketView
         active={active}
         changeActive={changeActive}
         currentCurrency={currentCurrency}
-        basketProducts={basketProducts}
-        deleteFromBasket={deleteFromBasket}
+        basketProducts={Context.basketProducts}
+        deleteFromBasket={Context.deleteFromBasket}
         dragStartHandler={dragStartHandler}
         dragOverHandler={dragOverHandler}
         dragDropHandler={dragDropHandler}
@@ -58,11 +61,11 @@ class Basket extends Component {
   }
 }
 
+Basket.contextType = BaseContext;
+
 Basket.propTypes = {
   active: PropTypes.bool.isRequired,
   changeActive: PropTypes.func.isRequired,
-  basketProducts: PropTypes.array.isRequired,
-  deleteFromBasket: PropTypes.func.isRequired,
   dragStartHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,
   dragDropHandler: PropTypes.func.isRequired,

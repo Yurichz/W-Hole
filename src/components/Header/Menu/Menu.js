@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Menu.css';
 import PropTypes from 'prop-types';
 
@@ -27,7 +28,7 @@ class Menu extends React.Component {
               return (
                 <div key={item.value} className="Item">
                   <h3>
-                    <a href={item.href}>{item.value}</a>
+                    <Link to={item.href}>{item.value}</Link>
                   </h3>
                 </div>
               ); 

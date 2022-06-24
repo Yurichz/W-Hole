@@ -1,0 +1,77 @@
+.ProductPage{
+    width: 100%;
+    height: 100%;
+    color: white;
+    background: black;
+    transition: ease 0.2s;
+}
+.ProductContainer{
+    width: 96%;
+    padding: 100px 2% 2% 2%;
+}
+.ProductContainer img{
+    border-radius: 10px;
+    width: 500px;
+}
+.ProductPageName{
+    padding-bottom: 5%;
+}
+.ProductPageMainCase{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.br {
+    border-bottom: 4px solid purple;
+    border-bottom-right-radius: 12px;
+}
+.ProductPageBuyMenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5%;
+    text-align: center;
+}
+.ProductCost{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.ProductPaymentMethods{
+    display: flex;
+    margin-top: 5%;
+}
+.ProductPaymentMethods h3{
+    font-size: 12px;
+}
+.ProductPaymentMethods h4{
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+.ProductReturn {
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+@media (max-width: 950px){
+    .ProductPaymentMethods {
+        display: flex;
+        flex-direction: column;
+    }
+    .ProductContainer img{
+        border-radius: 10px;
+        width: 400px;
+    }
+}
+@media (max-width: 670px){
+    .ProductContainer img{
+        border-radius: 10px;
+        width: 300px;
+    }
+}
+@media (max-width: 570px){
+    .ProductPageMainCase{
+        flex-direction: column;
+    }
+}

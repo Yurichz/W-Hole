@@ -9,7 +9,7 @@ class ShopContentView extends Component {
   render() {
     const {
       changeSortSelector, addOrRemoveToFilter, shopFiltersLength, ShopItemsData,
-      checkInFilter, addToBasket, currentCurrency, currentCurrencySign
+      checkInFilter, currentCurrency, currentCurrencySign
     } = this.props;
     return (
       <div className="shopContent">
@@ -33,7 +33,6 @@ class ShopContentView extends Component {
               shopElements={shopFiltersLength
                 ? ShopItemsData.filter((item) => checkInFilter(item))
                 : ShopItemsData}
-              addToBasket={addToBasket}
               currentCurrency={currentCurrency}
               currentCurrencySign={currentCurrencySign}
             />
@@ -50,7 +49,6 @@ ShopContentView.propTypes = {
   shopFiltersLength: PropTypes.number.isRequired,
   ShopItemsData: PropTypes.array.isRequired,
   checkInFilter: PropTypes.func.isRequired,
-  addToBasket: PropTypes.func.isRequired,
   currentCurrency: PropTypes.number.isRequired,
   currentCurrencySign: PropTypes.string.isRequired
 };

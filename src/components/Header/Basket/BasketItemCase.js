@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './BasketItemCase.css';
 import PropTypes from 'prop-types';
+import BaseContext from '../../../context/BaseContext';
 
 class BasketItemCase extends Component {
   render() {
     const {
-      product, deleteFromBasket, active, dragStartHandler, dragOverHandler,
+      product, active, dragStartHandler, dragOverHandler,
       dragDropHandler, currentCurrency, currentCurrencySign 
     } = this.props;
+    const Context = this.context;
     return (
       <div
         className={(active) ? 'BasketProduct active' : 'BasketProduct'}
@@ -25,7 +27,7 @@ class BasketItemCase extends Component {
             <h2>{`${(product.Price * currentCurrency).toFixed(2)} ${currentCurrencySign}`}</h2>
             <div
               className="DeleteIconFromBasket"
-              onClick={() => deleteFromBasket(product.Details.Id)}
+              onClick={() => Context.deleteFromBasket(product.Details.Id)}
             >
               <h3>X</h3>
             </div>
@@ -36,9 +38,10 @@ class BasketItemCase extends Component {
   }
 }
 
+BasketItemCase.contextType = BaseContext;
+
 BasketItemCase.propTypes = {
   product: PropTypes.object.isRequired,
-  deleteFromBasket: PropTypes.func.isRequired,
   active: PropTypes.bool.isRequired,
   dragStartHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,

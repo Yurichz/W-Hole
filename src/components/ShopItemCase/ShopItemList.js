@@ -5,7 +5,7 @@ import ShopItemCase from './ShopItemCase';
 class ShopItemsList extends Component {
   render() {
     const {
-      addToBasket, shopElements, currentCurrency, currentCurrencySign 
+      shopElements, currentCurrency, currentCurrencySign
     } = this.props;
     return (
       <>
@@ -14,7 +14,6 @@ class ShopItemsList extends Component {
             <div key={element.Details.Id}>
               <ShopItemCase
                 element={element}
-                addToBasket={addToBasket}
                 currentCurrency={currentCurrency}
                 currentCurrencySign={currentCurrencySign}
               />
@@ -27,7 +26,6 @@ class ShopItemsList extends Component {
 }
 
 ShopItemsList.propTypes = {
-  addToBasket: PropTypes.func.isRequired,
   shopElements: PropTypes.array.isRequired,
   currentCurrency: PropTypes.number.isRequired,
   currentCurrencySign: PropTypes.string.isRequired

@@ -8,18 +8,16 @@ import './Main.css';
 
 class Main extends React.Component {
   render() {
-    const { addToBasket, currentCurrency, currentCurrencySign } = this.props;
+    const { currentCurrency, currentCurrencySign } = this.props;
     return (
       <div className="main">
         <FirstContainerContent />
         <SecondContainerContent />
         <BestSellers
-          addToBasket={addToBasket}
           currentCurrency={currentCurrency}
           currentCurrencySign={currentCurrencySign}
         />
         <ShopContent
-          addToBasket={addToBasket}
           currentCurrency={currentCurrency}
           currentCurrencySign={currentCurrencySign}
         />
@@ -29,7 +27,6 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-  addToBasket: PropTypes.func.isRequired,
   currentCurrency: PropTypes.number.isRequired,
   currentCurrencySign: PropTypes.string.isRequired
 };

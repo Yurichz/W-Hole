@@ -1,0 +1,20 @@
+.CharacteristicsCase{
+    padding-top: 5%;
+}
+
+.Characteristics{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Characteristics div{
+    display: flex;
+
+    align-items: center;
+}
+.Characteristics h3{
+    width: 100%;
+    padding-bottom: 2%;
+    color: #c28bfa;
+}

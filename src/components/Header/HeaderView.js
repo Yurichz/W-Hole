@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import SiteLogo from './Logo.svg';
 import Basket from './Basket.png';
 import { ReactComponent as BurgerButton } from './BurgerButton.svg';
@@ -19,12 +20,10 @@ class HeaderView extends Component {
         >
           <BurgerButton alt="Burger_Button" className="BurgerImage" />
         </div>
-        <div className="LogoAndName">
-          <a className="logo" href="/src/pages">
-            <img src={SiteLogo} alt="Logo_W-Hole" />
-          </a>
-          <a className="SiteName" href="/src/pages">W-Hole</a>
-        </div>
+        <Link to="/" className="LogoAndName">
+          <img src={SiteLogo} alt="Logo_W-Hole" />
+          <p>W-Hole</p>
+        </Link>
         <div className="BasketName">
           <select
             className="changeCurrentCurrency"
