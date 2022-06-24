@@ -12,7 +12,7 @@ class App extends React.Component {
       activeMenu: false,
       activeBasket: false,
       basketProducts: [],
-      currentProduct: null,
+      currentProduct: [],
       currentDragProduct: null,
       exchangeRates: null,
       currentCurrency: {
@@ -110,7 +110,7 @@ class App extends React.Component {
     const { addToBasket, deleteFromBasket, setCurrentProduct } = this;
     return (
       <BaseContext.Provider value={{
-        basketProducts, addToBasket, deleteFromBasket, setCurrentProduct 
+        basketProducts, currentProduct, addToBasket, deleteFromBasket, setCurrentProduct
       }}
       >
         <AppView
@@ -119,7 +119,6 @@ class App extends React.Component {
           basketLength={basketProducts.length}
           changeCurrentCurrency={this.changeCurrentCurrency}
           changeExchangeRates={changeExchangeRates}
-          currentProduct={currentProduct}
           currentCurrency={exchangeRates ? +exchangeRates.toFixed(2) : 1}
           currentCurrencySign={currentCurrency.sign}
           activeBasket={activeBasket}

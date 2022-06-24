@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import Button from '../../components/Button/Button';
 import Characteristics from './Characteristics/Characteristics';
 import './ProductPage.css';
+import BaseContext from '../../context/BaseContext';
 
 class ProductPage extends Component {
   render() {
     const {
-      currentProduct, currentCurrency, currentCurrencySign
+      currentCurrency, currentCurrencySign
     } = this.props;
+    const { currentProduct } = this.context;
     return (
       <div className="ProductPage">
         <div className="ProductContainer">
@@ -44,8 +46,9 @@ class ProductPage extends Component {
   }
 }
 
+ProductPage.contextType = BaseContext;
+
 ProductPage.propTypes = {
-  currentProduct: PropTypes.object.isRequired,
   currentCurrency: PropTypes.number.isRequired,
   currentCurrencySign: PropTypes.string.isRequired
 };

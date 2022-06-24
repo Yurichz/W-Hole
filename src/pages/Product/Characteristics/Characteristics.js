@@ -11,7 +11,7 @@ class Characteristics extends Component {
         <div className="Characteristics br">
           { charInfo.map((item) => {
             return (
-              <div>
+              <div key={item[1]}>
                 <h3>{item[0]}</h3>
                 <h3>{item[1]}</h3>
               </div>

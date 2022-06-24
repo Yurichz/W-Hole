@@ -20,7 +20,7 @@ class AppView extends Component {
       changeActiveMenu, changeActiveBasket, basketLength,
       changeCurrentCurrency, currentCurrency, currentCurrencySign,
       activeBasket, dragStartHandler, dragOverHandler,
-      dragDropHandler, activeMenu, items, currentProduct
+      dragDropHandler, activeMenu, items
     } = this.props;
     return (
       <Router>
@@ -35,7 +35,6 @@ class AppView extends Component {
             path="/product/:title"
             element={
               <ProductPage
-                currentProduct={currentProduct}
                 currentCurrency={currentCurrency}
                 currentCurrencySign={currentCurrencySign}
               />
@@ -84,8 +83,7 @@ AppView.propTypes = {
   dragOverHandler: PropTypes.func.isRequired,
   dragDropHandler: PropTypes.func.isRequired,
   activeMenu: PropTypes.bool.isRequired,
-  items: PropTypes.array.isRequired,
-  currentProduct: PropTypes.object.isRequired
+  items: PropTypes.array.isRequired
 };
 
 export default AppView;
