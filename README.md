@@ -1,4 +1,4 @@
-https://yurichz.github.io/W-Hole/
+https://w-hole.vercel.app
 
 <h3>HomeWork 3: "Added and Basket"</h3>
 Accidentally wrote "Added", it was supposed to be "Shop"
