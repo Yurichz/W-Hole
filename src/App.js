@@ -1,84 +1,69 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import AppView from './AppView';
 import BaseContext from './context/BaseContext';
 
-class App extends React.Component {
-  items = [{ value: 'Головна', href: '/main' }, { value: 'Каталог', href: '/catalog' },
-    { value: 'Про нас', href: '/aboutus' }];
+function App() {
+  const items = useMemo(() => [{ value: 'Головна', href: '/main' }, { value: 'Каталог', href: '/catalog' },
+    { value: 'Про нас', href: '/aboutus' }], []);
 
-  constructor() {
-    super();
-    this.state = {
-      activeMenu: false,
-      activeBasket: false,
-      basketProducts: [],
-      currentProduct: [],
-      currentDragProduct: null,
-      exchangeRates: null,
-      currentCurrency: {
-        currency: 'USD',
-        sign: '$'
-      }
-    };
-  }
+  const [activeMenu, setActiveMenu] = useState(false);
+  const [activeBasket, setActiveBasket] = useState(false);
+  const [basketProducts, setBasketProducts] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState([]);
+  const [currentDragProduct, setCurrentDragProduct] = useState(null);
+  const [exchangeRates, setExchangeRates] = useState(null);
+  const [currentCurrency, setCurrentCurrency] = useState({
+    currency: 'USD',
+    sign: '$'
+  });
 
-  changeActiveMenu = () => {
-    this.setState((state) => ({
-      activeMenu: !state.activeMenu
-    }));
+  const changeActiveMenu = () => {
+    setActiveMenu(!activeMenu);
   };
 
-  changeActiveBasket = () => {
-    this.setState((state) => ({
-      activeBasket: !state.activeBasket
-    }));
+  const changeActiveBasket = () => {
+    setActiveBasket(!activeBasket);
   };
 
-  addToBasket = (Product) => {
-    const { basketProducts } = this.state;
+  const addToBasket = (Product) => {
     const arrIds = basketProducts.map((elem) => elem.Details.Id);
-    this.setState((state) => {
-      if (!arrIds.includes(Product.Details.Id)) {
-        return ({
-          basketProducts: [...state.basketProducts, Product]
-        });
-      }
-      return ({});
-    });
+    if (!arrIds.includes(Product.Details.Id)) {
+      setBasketProducts([...basketProducts, Product]);
+    }
   };
 
-  deleteFromBasket = (Id) => {
-    this.setState((state) => ({
-      basketProducts: state.basketProducts.filter((item) => { return item.Details.Id !== Id; })
-    }));
+  const deleteFromBasket = (Id) => {
+    setBasketProducts(
+      basketProducts.filter((item) => { return item.Details.Id !== Id; })
+    );
   };
 
-  dragStartHandler = (e, product) => {
-    this.setState({ currentDragProduct: product });
+  const dragStartHandler = (e, product) => {
+    setCurrentDragProduct(product);
   };
 
-  dragOverHandler = (e) => {
+  const dragOverHandler = (e) => {
     e.preventDefault();
   };
 
-  dragDropHandler = (e, product) => {
+  const dragDropHandler = (e, product) => {
     e.preventDefault();
-    this.setState((state) => {
-      return {
-        basketProducts: state.basketProducts.map((s) => {
-          if (s.Details.Id === product.Details.Id) {
-            return state.currentDragProduct;
-          }
-          if (s.Details.Id === state.currentDragProduct.Details.Id) {
-            return product;
-          }
-          return s;
-        })
-      };
+    console.log(basketProducts);
+    setBasketProducts(() => {
+      return basketProducts.map((s) => {
+        if (s.Details.Id === product.Details.Id) {
+          return currentDragProduct;
+        }
+        if (s.Details.Id === currentDragProduct.Details.Id) {
+          return product;
+        }
+        return s;
+      });
     });
+    console.log(basketProducts);
   };
 
-  changeCurrentCurrency = (e, exchangeRates) => {
+  const changeCurrentCurrency = (e, Rates) => {
     let temp;
     if (e === 'USD') {
       temp = '$';
@@ -89,49 +74,38 @@ class App extends React.Component {
     } else {
       temp = e;
     }
-    this.setState({
-      currentCurrency: {
-        currency: e,
-        sign: temp
-      },
-      exchangeRates
+    setCurrentCurrency({
+      currency: e,
+      sign: temp
     });
+    setExchangeRates(Rates);
+  };
+  const changeCurrentProduct = (product) => {
+    setCurrentProduct(product);
   };
 
-  setCurrentProduct = (product) => {
-    this.setState({ currentProduct: product });
-  };
-
-  render() {
-    const {
-      basketProducts, changeExchangeRates, exchangeRates, currentCurrency,
-      activeBasket, activeMenu, currentProduct
-    } = this.state;
-    const { addToBasket, deleteFromBasket, setCurrentProduct } = this;
-    return (
-      <BaseContext.Provider value={{
-        basketProducts, currentProduct, addToBasket, deleteFromBasket, setCurrentProduct
-      }}
-      >
-        <AppView
-          changeActiveMenu={this.changeActiveMenu}
-          changeActiveBasket={this.changeActiveBasket}
-          basketLength={basketProducts.length}
-          changeCurrentCurrency={this.changeCurrentCurrency}
-          changeExchangeRates={changeExchangeRates}
-          currentCurrency={exchangeRates ? +exchangeRates.toFixed(2) : 1}
-          currentCurrencySign={currentCurrency.sign}
-          activeBasket={activeBasket}
-          dragStartHandler={this.dragStartHandler}
-          dragOverHandler={this.dragOverHandler}
-          dragDropHandler={this.dragDropHandler}
-          activeMenu={activeMenu}
-          headName="Меню сайта"
-          items={this.items}
-        />
-      </BaseContext.Provider>
-    );
-  }
+  return (
+    <BaseContext.Provider value={{
+      basketProducts, currentProduct, addToBasket, deleteFromBasket, changeCurrentProduct
+    }}
+    >
+      <AppView
+        changeActiveMenu={changeActiveMenu}
+        changeActiveBasket={changeActiveBasket}
+        basketLength={basketProducts.length}
+        changeCurrentCurrency={changeCurrentCurrency}
+        currentCurrency={exchangeRates ? +exchangeRates.toFixed(2) : 1}
+        currentCurrencySign={currentCurrency.sign}
+        activeBasket={activeBasket}
+        dragStartHandler={dragStartHandler}
+        dragOverHandler={dragOverHandler}
+        dragDropHandler={dragDropHandler}
+        activeMenu={activeMenu}
+        headName="Меню сайта"
+        items={items}
+      />
+    </BaseContext.Provider>
+  );
 }
 
 export default App;

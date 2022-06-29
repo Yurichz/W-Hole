@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
@@ -14,61 +14,58 @@ import Menu from './components/Header/Menu/Menu';
 import ProductPage from './pages/Product/ProductPage';
 import './App.css';
 
-class AppView extends Component {
-  render() {
-    const {
-      changeActiveMenu, changeActiveBasket, basketLength,
-      changeCurrentCurrency, currentCurrency, currentCurrencySign,
-      activeBasket, dragStartHandler, dragOverHandler,
-      dragDropHandler, activeMenu, items
-    } = this.props;
-    return (
-      <Router>
-        <Header
-          changeActiveMenu={changeActiveMenu}
-          changeActiveBasket={changeActiveBasket}
-          basketLength={basketLength}
-          changeCurrentCurrency={changeCurrentCurrency}
+function AppView({
+  changeActiveMenu, changeActiveBasket, basketLength,
+  changeCurrentCurrency, currentCurrency, currentCurrencySign,
+  activeBasket, dragStartHandler, dragOverHandler,
+  dragDropHandler, activeMenu, items 
+}) {
+  return (
+    <Router>
+      <Header
+        changeActiveMenu={changeActiveMenu}
+        changeActiveBasket={changeActiveBasket}
+        basketLength={basketLength}
+        changeCurrentCurrency={changeCurrentCurrency}
+      />
+      <Routes>
+        <Route
+          path="/product/:title"
+          element={
+            <ProductPage
+              currentCurrency={currentCurrency}
+              currentCurrencySign={currentCurrencySign}
+            />
+                    }
         />
-        <Routes>
-          <Route
-            path="/product/:title"
-            element={
-              <ProductPage
-                currentCurrency={currentCurrency}
-                currentCurrencySign={currentCurrencySign}
-              />
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <Main
-                currentCurrency={currentCurrency}
-                currentCurrencySign={currentCurrencySign}
-              />
-                }
-          />
-        </Routes>
-        <Footer />
-        <Basket
-          active={activeBasket}
-          changeActive={changeActiveBasket}
-          currentCurrency={currentCurrency}
-          dragStartHandler={dragStartHandler}
-          dragOverHandler={dragOverHandler}
-          dragDropHandler={dragDropHandler}
-          currentCurrencySign={currentCurrencySign}
+        <Route
+          path="*"
+          element={
+            <Main
+              currentCurrency={currentCurrency}
+              currentCurrencySign={currentCurrencySign}
+            />
+                    }
         />
-        <Menu
-          active={activeMenu}
-          changeActive={changeActiveMenu}
-          headName="Меню сайта"
-          items={items}
-        />
-      </Router>
-    );
-  }
+      </Routes>
+      <Footer />
+      <Basket
+        active={activeBasket}
+        changeActive={changeActiveBasket}
+        currentCurrency={currentCurrency}
+        dragStartHandler={dragStartHandler}
+        dragOverHandler={dragOverHandler}
+        dragDropHandler={dragDropHandler}
+        currentCurrencySign={currentCurrencySign}
+      />
+      <Menu
+        active={activeMenu}
+        changeActive={changeActiveMenu}
+        headName="Меню сайта"
+        items={items}
+      />
+    </Router>
+  );
 }
 
 AppView.propTypes = {

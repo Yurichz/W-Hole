@@ -1,36 +1,25 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './ShopFilterCase.css';
 import PropTypes from 'prop-types';
 
-class ShopFilterCase extends Component {
-  constructor() {
-    super();
-    this.state = {
-      active: false
-    };
-  }
+function ShopFilterCase({ addOrRemoveToFilter, filter }) {
+  const [active, setActive] = useState(false);
 
-  changeActive = () => {
-    this.setState(({ active }) => ({
-      active: !active
-    }));
+  const changeActive = () => {
+    setActive(!active);
   };
 
-  render() {
-    const { active } = this.state;
-    const { addOrRemoveToFilter, filter } = this.props;
-    return (
-      <div
-        className={active ? 'FilterCase active' : 'FilterCase'}
-        onClick={() => {
-          addOrRemoveToFilter(filter);
-          this.changeActive();
-        }}
-      >
-        <h3>{filter}</h3>
-      </div>
-    );
-  }
+  return (
+    <div
+      className={active ? 'FilterCase active' : 'FilterCase'}
+      onClick={() => {
+        addOrRemoveToFilter(filter);
+        changeActive();
+      }}
+    >
+      <h3>{filter}</h3>
+    </div>
+  );
 }
 
 ShopFilterCase.propTypes = {

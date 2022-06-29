@@ -1,67 +1,52 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BasketView from './BasketView';
 import BaseContext from '../../../context/BaseContext';
 
-class Basket extends Component {
-  constructor() {
-    super();
-    this.state = {
-      number: 0
-    };
-  }
+function Basket({
+  active, changeActive,
+  dragStartHandler, dragOverHandler, dragDropHandler,
+  currentCurrency, currentCurrencySign 
+}) {
+  const [number, setNumber] = useState(0);
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.targetOnKeyDown, false);
-  }
+  const { basketProducts } = useContext(BaseContext);
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.targetOnKeyDown, false);
-  }
+  console.log(active);
 
-  targetOnKeyDown = (e) => {
-    const { active } = this.props;
-    const Context = this.context;
+  const targetOnKeyDown = (e) => {
+    console.log(active);
     if (active) {
       if (e.key === 'ArrowDown') {
-        this.setState(({ number }) => ({
-          number: number < Context.basketProducts.length ? number + 1 : 0
-        }));
+        setNumber(number < basketProducts.length ? number + 1 : 0);
       }
       if (e.key === 'ArrowUp') {
-        this.setState(({ number }) => ({
-          number: number ? number - 1 : Context.basketProducts.length
-        }));
+        setNumber(number ? number - 1 : basketProducts.length);
       }
     }
   };
 
-  render() {
-    const { number } = this.state;
-    const {
-      active, changeActive,
-      dragStartHandler, dragOverHandler, dragDropHandler,
-      currentCurrency, currentCurrencySign 
-    } = this.props;
-    const Context = this.context;
-    return (
-      <BasketView
-        active={active}
-        changeActive={changeActive}
-        currentCurrency={currentCurrency}
-        basketProducts={Context.basketProducts}
-        deleteFromBasket={Context.deleteFromBasket}
-        dragStartHandler={dragStartHandler}
-        dragOverHandler={dragOverHandler}
-        dragDropHandler={dragDropHandler}
-        number={number}
-        currentCurrencySign={currentCurrencySign}
-      />
-    );
-  }
-}
+  useEffect(() => {
+    window.addEventListener('keydown', targetOnKeyDown, false);
+    return () => {
+      window.removeEventListener('keydown', targetOnKeyDown, false);
+    };
+  }, []);
 
-Basket.contextType = BaseContext;
+  return (
+    <BasketView
+      active={active}
+      changeActive={changeActive}
+      currentCurrency={currentCurrency}
+      basketProducts={basketProducts}
+      dragStartHandler={dragStartHandler}
+      dragOverHandler={dragOverHandler}
+      dragDropHandler={dragDropHandler}
+      number={number}
+      currentCurrencySign={currentCurrencySign}
+    />
+  );
+}
 
 Basket.propTypes = {
   active: PropTypes.bool.isRequired,

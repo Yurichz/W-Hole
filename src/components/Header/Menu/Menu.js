@@ -3,41 +3,38 @@ import { Link } from 'react-router-dom';
 import './Menu.css';
 import PropTypes from 'prop-types';
 
-class Menu extends React.Component {
-  render() {
-    const {
-      active, changeActive, headName, items
-    } = this.props;
-    return (
+function Menu({
+  active, changeActive, headName, items 
+}) {
+  return (
+    <div
+      className={active ? 'menu active' : 'menu'}
+      onClick={() => changeActive()}
+    >
+      <div className="blur" />
       <div
-        className={active ? 'menu active' : 'menu'}
-        onClick={() => changeActive()}
+        className="menuContent"
+        onClick={(s) => s.stopPropagation()}
       >
-        <div className="blur" />
-        <div
-          className="menuContent"
-          onClick={(s) => s.stopPropagation()}
-        >
-          <div className="menuHeadName">
-            <h1>
-              {headName}
-            </h1>
-          </div>
-          <div className="Items">
-            {items.map((item) => {
-              return (
-                <div key={item.value} className="Item">
-                  <h3>
-                    <Link to={item.href}>{item.value}</Link>
-                  </h3>
-                </div>
-              ); 
-            })}
-          </div>
+        <div className="menuHeadName">
+          <h1>
+            {headName}
+          </h1>
+        </div>
+        <div className="Items">
+          {items.map((item) => {
+            return (
+              <div key={item.value} className="Item">
+                <h3>
+                  <Link to={item.href}>{item.value}</Link>
+                </h3>
+              </div>
+            );
+          })}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 Menu.propTypes = {
