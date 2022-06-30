@@ -48,7 +48,6 @@ function App() {
 
   const dragDropHandler = (e, product) => {
     e.preventDefault();
-    console.log(basketProducts);
     setBasketProducts(() => {
       return basketProducts.map((s) => {
         if (s.Details.Id === product.Details.Id) {
@@ -60,7 +59,6 @@ function App() {
         return s;
       });
     });
-    console.log(basketProducts);
   };
 
   const changeCurrentCurrency = (e, Rates) => {

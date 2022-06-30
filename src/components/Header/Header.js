@@ -7,7 +7,7 @@ function Header({
 }) {
   const [LengthAnim, setLengthAnim] = useState('basketLength');
 
-  const [exchangeRates, setExchangeRates] = useState([]);
+  const [exchangeRates, setExchangeRates] = useState({});
 
   const getExchangeRates = async () => {
     const response = await fetch('https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD');
