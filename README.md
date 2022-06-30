@@ -8,3 +8,4 @@ Accidentally wrote "Added", it was supposed to be "Shop"
 And: "Adding all kinds of currencies(I didn’t finish reading the task a little, I didn’t see that you need to display the entire list)"
 <h3>HomeWork 7: "Added Eslint" & "Added HOC(withModal)"</h3>
 <h3>HomeWork 8: "Added Context and Product Page"</h3>
+<h3>HomeWork 9: "Transition to functional components"</h3>
