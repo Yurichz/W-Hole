@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import AppView from './AppView';
-import BaseContext from './context/BaseContext';
+import ProductContext from './context/ProductContext';
 
 function App() {
   const items = useMemo(() => [{ value: 'Головна', href: '/main' }, { value: 'Каталог', href: '/catalog' },
@@ -83,7 +83,7 @@ function App() {
   };
 
   return (
-    <BaseContext.Provider value={{
+    <ProductContext.Provider value={{
       basketProducts, currentProduct, addToBasket, deleteFromBasket, changeCurrentProduct
     }}
     >
@@ -102,7 +102,7 @@ function App() {
         headName="Меню сайта"
         items={items}
       />
-    </BaseContext.Provider>
+    </ProductContext.Provider>
   );
 }
 

@@ -25,12 +25,7 @@ function ShopContent({ currentCurrency, currentCurrencySign }) {
   };
 
   const checkInFilter = (item) => {
-    for (let i = 0; i < shopFilters.length; i++) {
-      if (item.Details.Tags.includes(shopFilters[i])) {
-        return true;
-      }
-    }
-    return false;
+    return shopFilters.some((e) => item.Details.Tags.includes(e));
   };
 
   const sortBySelectedMyMethod = () => {

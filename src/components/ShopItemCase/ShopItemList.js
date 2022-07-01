@@ -5,17 +5,15 @@ import ShopItemCase from './ShopItemCase';
 function ShopItemsList({ shopElements, currentCurrency, currentCurrencySign }) {
   return (
     <>
-      {shopElements.map((element) => {
-        return (
-          <div key={element.Details.Id}>
-            <ShopItemCase
-              element={element}
-              currentCurrency={currentCurrency}
-              currentCurrencySign={currentCurrencySign}
-            />
-          </div>
-        );
-      })}
+      {shopElements.map((element) => (
+        <div key={element.Details.Id}>
+          <ShopItemCase
+            element={element}
+            currentCurrency={currentCurrency}
+            currentCurrencySign={currentCurrencySign}
+          />
+        </div>
+      ))}
     </>
   );
 }

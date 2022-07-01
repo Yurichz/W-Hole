@@ -22,15 +22,13 @@ function Menu({
           </h1>
         </div>
         <div className="Items">
-          {items.map((item) => {
-            return (
-              <div key={item.value} className="Item">
-                <h3>
-                  <Link to={item.href}>{item.value}</Link>
-                </h3>
-              </div>
-            );
-          })}
+          {items.map((item) => (
+            <div key={item.value} className="Item">
+              <h3>
+                <Link to={item.href}>{item.value}</Link>
+              </h3>
+            </div>
+          ))}
         </div>
       </div>
     </div>

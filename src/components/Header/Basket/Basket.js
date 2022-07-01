@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import BasketView from './BasketView';
-import BaseContext from '../../../context/BaseContext';
+import ProductContext from '../../../context/ProductContext';
 
 function Basket({
   active, changeActive,
@@ -10,7 +10,7 @@ function Basket({
 }) {
   const [number, setNumber] = useState(0);
 
-  const { basketProducts } = useContext(BaseContext);
+  const { basketProducts } = useContext(ProductContext);
 
   const targetOnKeyDown = (e) => {
     if (active) {

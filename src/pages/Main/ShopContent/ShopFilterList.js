@@ -12,15 +12,13 @@ function ShopFilterList({ addOrRemoveToFilter }) {
     <div className="ShopFilterList">
       <h2>Фільтри:</h2>
       <div className="FilterItems">
-        {filterList.map((item) => {
-          return (
-            <ShopFilterCase
-              key={item}
-              filter={item}
-              addOrRemoveToFilter={addOrRemoveToFilter}
-            />
-          );
-        })}
+        {filterList.map((item) => (
+          <ShopFilterCase
+            key={item}
+            filter={item}
+            addOrRemoveToFilter={addOrRemoveToFilter}
+          />
+        ))}
       </div>
     </div>
   );

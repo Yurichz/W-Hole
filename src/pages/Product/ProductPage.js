@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Button from '../../components/Button/Button';
 import Characteristics from './Characteristics/Characteristics';
 import './ProductPage.css';
-import BaseContext from '../../context/BaseContext';
+import ProductContext from '../../context/ProductContext';
 
 function ProductPage({ currentCurrency, currentCurrencySign }) {
-  const { currentProduct } = useContext(BaseContext);
+  const { currentProduct, addToBasket } = useContext(ProductContext);
   return (
     <div className="ProductPage">
       <div className="ProductContainer">
@@ -21,7 +21,7 @@ function ProductPage({ currentCurrency, currentCurrencySign }) {
             <div className="ProductCost br">
               <h2>Ціна за одиницю:</h2>
               <h2>{`${(currentProduct.Price * currentCurrency).toFixed(2)} ${currentCurrencySign}`}</h2>
-              <Button item={currentProduct} />
+              <Button item={currentProduct} handleClick={addToBasket} text="Купити" />
             </div>
             <div className="ProductPaymentMethods br">
               <div>

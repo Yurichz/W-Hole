@@ -1,23 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import BaseContext from '../../context/BaseContext';
 import './Button.css';
 
-function Button({ item }) {
-  const { addToBasket } = useContext(BaseContext);
+function Button({ item, handleClick, text }) {
   return (
     <div
       className="btn"
-      onClick={() => addToBasket(item)}
+      onClick={() => handleClick(item)}
     >
       <h2>
-        Купити
+        {text}
       </h2>
     </div>
   );
 }
 
 Button.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired
 };
 export default Button;

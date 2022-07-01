@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import './BasketItemCase.css';
 import PropTypes from 'prop-types';
-import BaseContext from '../../../context/BaseContext';
+import ProductContext from '../../../context/ProductContext';
 
 function BasketItemCase({
   product, active, dragStartHandler, dragOverHandler,
   dragDropHandler, currentCurrency, currentCurrencySign 
 }) {
-  const { deleteFromBasket } = useContext(BaseContext);
+  const { deleteFromBasket } = useContext(ProductContext);
   return (
     <div
       className={(active) ? 'BasketProduct active' : 'BasketProduct'}

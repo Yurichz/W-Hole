@@ -3,10 +3,10 @@ import './ShopItemCase.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
-import BaseContext from '../../context/BaseContext';
+import ProductContext from '../../context/ProductContext';
 
 function ShopItemCase({ element, currentCurrency, currentCurrencySign }) {
-  const { changeCurrentProduct } = useContext(BaseContext);
+  const { changeCurrentProduct, addToBasket } = useContext(ProductContext);
   const handleClick = () => {
     changeCurrentProduct(element);
   };
@@ -29,7 +29,7 @@ function ShopItemCase({ element, currentCurrency, currentCurrencySign }) {
           </div>
         </div>
       </Link>
-      <Button item={element} />
+      <Button item={element} handleClick={addToBasket} text="Купити" />
     </div>
   );
 }

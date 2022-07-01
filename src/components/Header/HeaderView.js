@@ -29,11 +29,9 @@ function HeaderView({
             changeCurrentCurrency(e.target.value, exchangeRates[e.target.value]);
           }}
         >
-          {Object.keys(exchangeRates).map((key) => {
-            return (
-              <option key={key} value={key}>{key}</option>
-            );
-          })}
+          {Object.keys(exchangeRates).map((key) => (
+            <option key={key} value={key}>{key}</option>
+          ))}
         </select>
         <div
           className="BasketButton"

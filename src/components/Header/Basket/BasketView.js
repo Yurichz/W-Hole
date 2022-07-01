@@ -15,21 +15,18 @@ function BasketView({
       onClick={(s) => s.stopPropagation()}
     >
       {basketProducts.length
-        ? basketProducts.map((element, i = -1) => {
-          i += 1;
-          return (
-            <BasketItemCase
-              key={element.Details.Id}
-              product={element}
-              active={i === number}
-              dragStartHandler={dragStartHandler}
-              dragOverHandler={dragOverHandler}
-              dragDropHandler={dragDropHandler}
-              currentCurrency={currentCurrency}
-              currentCurrencySign={currentCurrencySign}
-            />
-          );
-        })
+        ? basketProducts.map((element, i = -1) => (
+          <BasketItemCase
+            key={element.Details.Id}
+            product={element}
+            active={i + 1 === number}
+            dragStartHandler={dragStartHandler}
+            dragOverHandler={dragOverHandler}
+            dragDropHandler={dragDropHandler}
+            currentCurrency={currentCurrency}
+            currentCurrencySign={currentCurrencySign}
+          />
+        ))
         : (
           <div className="EmptyBasket">
             <img src={EmptyBasket} alt="EmptyBasket" />
