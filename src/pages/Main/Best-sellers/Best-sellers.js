@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 import './Best-sellers.css';
 import AOS from 'aos';
 import PropTypes from 'prop-types';
@@ -16,10 +18,11 @@ function Bestsellers({ currentCurrency, currentCurrencySign }) {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+  const { t } = useTranslation();
   return (
     <div className="Best-sellers">
       <div className="Sellers-Name" data-aos="fade-up">
-        <h1>ХОДОВИЙ ТОВАР</h1>
+        <h1>{t('bestSellers')}</h1>
       </div>
       <div className="sellers-items-case">
         <div className="sellers-items" data-aos="fade-right">

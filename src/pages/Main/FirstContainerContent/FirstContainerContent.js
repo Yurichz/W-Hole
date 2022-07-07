@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 import './FirstContainerContent.css';
 import RTX from './RTX.png';
 import Intel from './intel.png';
@@ -9,14 +11,15 @@ import Power from './power-unit.png';
 import Computer from './computer.png';
 
 function FirstContainerContent() {
+  const { t } = useTranslation();
   return (
     <div className="FirstContent">
       <div className="MessageContent">
         <div className="message">
-          <h1>ІНТЕРНЕТ-МАГАЗИН</h1>
-          <h2>ЯКИЙ ДОПОМОЖЕ ТОБІ</h2>
-          <h2>ПІДІБРАТИ ПК</h2>
-          <h3>Каталог:</h3>
+          <h1>{t('internetShop')}</h1>
+          <h2>{t('helpYou.part1')}</h2>
+          <h2>{t('helpYou.part2')}</h2>
+          <h3>{t('catalogue')}</h3>
           <ul className="CatalogGridButtons">
             <li className="Li-Images">
               <a href="/src/pages">

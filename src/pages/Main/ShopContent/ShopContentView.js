@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 import PropTypes from 'prop-types';
 import ShopItemsList from '../../../components/ShopItemCase/ShopItemList';
 import './ShopContent.css';
@@ -9,19 +11,20 @@ function ShopContentView({
   changeSortSelector, addOrRemoveToFilter, shopFiltersLength, ShopItemsData,
   checkInFilter, currentCurrency, currentCurrencySign 
 }) {
+  const { t } = useTranslation();
   return (
     <div className="shopContent">
       <div className="shopContentInfo">
-        <h1>Магазин товарів</h1>
+        <h1>{t('stuff')}</h1>
         <select
           className="shopSortSelector"
           onChange={(e) => {
             changeSortSelector(e.target.value);
           }}
         >
-          <option value="byId">По ІD</option>
-          <option value="byPrice">По зростанню ціни</option>
-          <option value="byPopular">Ходові</option>
+          <option value="byId">{t('byId')}</option>
+          <option value="byPrice">{t('byPriceIncreases')}</option>
+          <option value="byPopular">{t('byPopular')}</option>
         </select>
       </div>
       <div className="shopItemsAndFilters">

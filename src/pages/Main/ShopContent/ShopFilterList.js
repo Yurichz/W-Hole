@@ -1,20 +1,41 @@
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 import PropTypes from 'prop-types';
 import ShopFilterCase from './ShopFilterCase';
 import './ShopFilterList.css';
 
 function ShopFilterList({ addOrRemoveToFilter }) {
+  const { t, i18n } = useTranslation();
   const filterList = useMemo(
-    () => ['MONITOR', 'GPU', 'CPU', 'MOUSE', 'HEADPHONES', 'RAM'],
-    []
+    () => [
+      {
+        MONITOR: t('filterList.monitor')
+      },
+      {
+        GPU: t('filterList.gpu')
+      },
+      {
+        CPU: t('filterList.cpu')
+      },
+      {
+        MOUSE: t('filterList.mouse')
+      },
+      {
+        HEADPHONES: t('filterList.headphones')
+      },
+      {
+        RAM: t('filterList.ram')
+      }],
+    [i18n.language]
   );
   return (
     <div className="ShopFilterList">
-      <h2>Фільтри:</h2>
+      <h2>{t('filters')}</h2>
       <div className="FilterItems">
         {filterList.map((item) => (
           <ShopFilterCase
-            key={item}
+            key={Object.keys(item).toString()}
             filter={item}
             addOrRemoveToFilter={addOrRemoveToFilter}
           />

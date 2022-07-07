@@ -1,10 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 import AppView from './AppView';
 import ProductContext from './context/ProductContext';
+import './i18n/index';
 
 function App() {
-  const items = useMemo(() => [{ value: 'Головна', href: '/main' }, { value: 'Каталог', href: '/catalog' },
-    { value: 'Про нас', href: '/aboutus' }], []);
+  const { t, i18n } = useTranslation();
+  const items = useMemo(() => [{ value: t('main'), href: '/main' }, { value: t('catalogue'), href: '/catalog' },
+    { value: t('aboutUs'), href: '/aboutus' }], [i18n.language]);
 
   const [activeMenu, setActiveMenu] = useState(false);
   const [activeBasket, setActiveBasket] = useState(false);
@@ -83,26 +86,28 @@ function App() {
   };
 
   return (
-    <ProductContext.Provider value={{
-      basketProducts, currentProduct, addToBasket, deleteFromBasket, changeCurrentProduct
-    }}
-    >
-      <AppView
-        changeActiveMenu={changeActiveMenu}
-        changeActiveBasket={changeActiveBasket}
-        basketLength={basketProducts.length}
-        changeCurrentCurrency={changeCurrentCurrency}
-        currentCurrency={exchangeRates ? +exchangeRates.toFixed(2) : 1}
-        currentCurrencySign={currentCurrency.sign}
-        activeBasket={activeBasket}
-        dragStartHandler={dragStartHandler}
-        dragOverHandler={dragOverHandler}
-        dragDropHandler={dragDropHandler}
-        activeMenu={activeMenu}
-        headName="Меню сайта"
-        items={items}
-      />
-    </ProductContext.Provider>
+    <Suspense fallback="Load">
+      <ProductContext.Provider value={{
+        basketProducts, currentProduct, addToBasket, deleteFromBasket, changeCurrentProduct
+      }}
+      >
+        <AppView
+          changeActiveMenu={changeActiveMenu}
+          changeActiveBasket={changeActiveBasket}
+          basketLength={basketProducts.length}
+          changeCurrentCurrency={changeCurrentCurrency}
+          currentCurrency={exchangeRates ? +exchangeRates.toFixed(2) : 1}
+          currentCurrencySign={currentCurrency.sign}
+          activeBasket={activeBasket}
+          dragStartHandler={dragStartHandler}
+          dragOverHandler={dragOverHandler}
+          dragDropHandler={dragDropHandler}
+          activeMenu={activeMenu}
+          headName="Меню сайта"
+          items={items}
+        />
+      </ProductContext.Provider>
+    </Suspense>
   );
 }
 

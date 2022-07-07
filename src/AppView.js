@@ -6,6 +6,8 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import './i18n';
 import Header from './components/Header/Header';
 import Main from './pages/Main/Main';
 import Footer from './components/Footer/Footer';
@@ -20,6 +22,7 @@ function AppView({
   activeBasket, dragStartHandler, dragOverHandler,
   dragDropHandler, activeMenu, items 
 }) {
+  const { t } = useTranslation();
   return (
     <Router>
       <Header
@@ -61,7 +64,7 @@ function AppView({
       <Menu
         active={activeMenu}
         changeActive={changeActiveMenu}
-        headName="Меню сайта"
+        headName={t('siteMenu')}
         items={items}
       />
     </Router>

@@ -1,6 +1,8 @@
 import React from 'react';
 import './Basket.css';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 import withModal from '../../../HOC/withModal/withModal';
 import BasketItemCase from './BasketItemCase';
 import EmptyBasket from '../../../assets/EmptyBasket.svg';
@@ -9,6 +11,7 @@ function BasketView({
   basketProducts, dragStartHandler, dragOverHandler,
   dragDropHandler, number, currentCurrency, currentCurrencySign
 }) {
+  const { t } = useTranslation();
   return (
     <div
       className="BasketContent"
@@ -30,7 +33,7 @@ function BasketView({
         : (
           <div className="EmptyBasket">
             <img src={EmptyBasket} alt="EmptyBasket" />
-            <h1>У кошику нічного немає :(</h1>
+            <h1>{t('emptyBasket')}</h1>
           </div>
         )}
     </div>

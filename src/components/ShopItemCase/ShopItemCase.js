@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 import './ShopItemCase.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -10,6 +12,7 @@ function ShopItemCase({ element, currentCurrency, currentCurrencySign }) {
   const handleClick = () => {
     changeCurrentProduct(element);
   };
+  const { t } = useTranslation();
   return (
     <div
       className="shopItemCase"
@@ -29,7 +32,7 @@ function ShopItemCase({ element, currentCurrency, currentCurrencySign }) {
           </div>
         </div>
       </Link>
-      <Button item={element} handleClick={addToBasket} text="Купити" />
+      <Button item={element} handleClick={addToBasket} text={t('buy')} />
     </div>
   );
 }

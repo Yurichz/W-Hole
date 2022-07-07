@@ -52,3 +52,17 @@
     background: #363636;
     transition: ease 0.2s;
 }
+.Language{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    bottom: 15%;
+}
+.LanguageItem{
+    margin-right: 20%;
+    cursor: pointer;
+}
+.LanguageItem:hover{
+    text-decoration: underline purple;
+}

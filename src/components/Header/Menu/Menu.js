@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
+import '../../../i18n';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 function Menu({
   active, changeActive, headName, items 
 }) {
+  const { i18n } = useTranslation();
   return (
     <div
       className={active ? 'menu active' : 'menu'}
@@ -29,6 +32,14 @@ function Menu({
               </h3>
             </div>
           ))}
+        </div>
+        <div className="Language">
+          <div className="LanguageItem" onClick={() => i18n.changeLanguage('ua')}>
+            <h3>UA</h3>
+          </div>
+          <div className="LanguageItem" onClick={() => i18n.changeLanguage('en')}>
+            <h3>ENG</h3>
+          </div>
         </div>
       </div>
     </div>

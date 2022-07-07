@@ -13,17 +13,17 @@ function ShopFilterCase({ addOrRemoveToFilter, filter }) {
     <div
       className={active ? 'FilterCase active' : 'FilterCase'}
       onClick={() => {
-        addOrRemoveToFilter(filter);
+        addOrRemoveToFilter(Object.keys(filter).toString());
         changeActive();
       }}
     >
-      <h3>{filter}</h3>
+      <h3>{Object.values(filter)}</h3>
     </div>
   );
 }
 
 ShopFilterCase.propTypes = {
-  filter: PropTypes.string.isRequired,
+  filter: PropTypes.object.isRequired,
   addOrRemoveToFilter: PropTypes.func.isRequired
 };
 

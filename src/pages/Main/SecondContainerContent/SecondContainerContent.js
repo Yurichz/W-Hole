@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 import './SecondContainerContent.css';
 
 function SecondContainerContent() {
+  const { t } = useTranslation();
   return (
     <div className="SecondContent">
       <div className="SiteInfo">
@@ -9,9 +12,9 @@ function SecondContainerContent() {
           <h1>W-Hole</h1>
         </div>
         <div className="OtherInfo">
-          <h3>- це інтернет-магазин який шарить у техніці та хоче цим допомогти іншим!</h3>
-          <h3>- це магазин який 24/7 розвивается щоб надавати вам більше послуг!</h3>
-          <h3>- це магазин у якому так і хочется щось придбати!</h3>
+          <h3>{t('siteInfo.part1')}</h3>
+          <h3>{t('siteInfo.part2')}</h3>
+          <h3>{t('siteInfo.part3')}</h3>
         </div>
       </div>
     </div>

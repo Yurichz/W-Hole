@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 import PropTypes from 'prop-types';
 import Button from '../../components/Button/Button';
 import Characteristics from './Characteristics/Characteristics';
@@ -7,6 +9,7 @@ import ProductContext from '../../context/ProductContext';
 
 function ProductPage({ currentCurrency, currentCurrencySign }) {
   const { currentProduct, addToBasket } = useContext(ProductContext);
+  const { t } = useTranslation();
   return (
     <div className="ProductPage">
       <div className="ProductContainer">
@@ -19,18 +22,18 @@ function ProductPage({ currentCurrency, currentCurrencySign }) {
           </div>
           <div className="ProductPageBuyMenu">
             <div className="ProductCost br">
-              <h2>Ціна за одиницю:</h2>
+              <h2>{t('pricePerUnit')}</h2>
               <h2>{`${(currentProduct.Price * currentCurrency).toFixed(2)} ${currentCurrencySign}`}</h2>
-              <Button item={currentProduct} handleClick={addToBasket} text="Купити" />
+              <Button item={currentProduct} handleClick={addToBasket} text={t('buy')} />
             </div>
             <div className="ProductPaymentMethods br">
               <div>
-                <h3>Оплата</h3>
-                <h4>Готівка,Безготівкова,VISA/Mastercard</h4>
+                <h3>{t('payment')}</h3>
+                <h4>{t('paymentMethods')}</h4>
               </div>
               <div className="ProductReturn">
-                <h3>Обмін/Повернення</h3>
-                <h4>Обмін/ повернення товару протягом 14 днів Гарантія: 36 місяців</h4>
+                <h3>{t('exchange')}</h3>
+                <h4>{t('exchangeMethods')}</h4>
               </div>
             </div>
           </div>
