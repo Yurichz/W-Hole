@@ -1,13 +1,32 @@
 .BasketContent{
+    height: 100%;
+    display: flex;
     border-radius: 20px;
-    background-color: white;
     width: 50%;
+    flex-direction: column;
+    justify-content: center;
 }
 .EmptyBasket{
     margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: white;
     display: flex;
     color: black;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+@media (max-width: 370px){
+    .EmptyBasketImage {
+        height: 120px;
+    }
+}
+.BasketProductsList{
+    background-color: #fff;
+    height: auto;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    border-radius: 20px;
+    overflow-y: scroll;
 }

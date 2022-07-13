@@ -17,17 +17,23 @@ function BasketView({
       onClick={(s) => s.stopPropagation()}
     >
       {basketProducts.length
-        ? basketProducts.map((element, i = -1) => (
-          <BasketItemCase
-            key={element.Details.Id}
-            product={element}
-            active={i + 1 === number}
-            dragOverHandler={dragOverHandler}
-          />
-        ))
+        ? (
+          <div className="BasketProductsList">
+            {
+            basketProducts.map((element, i = -1) => (
+              <BasketItemCase
+                key={element.Details.Id}
+                product={element}
+                active={i + 1 === number}
+                dragOverHandler={dragOverHandler}
+              />
+            ))
+          }
+          </div>
+        )
         : (
           <div className="EmptyBasket">
-            <img src={EmptyBasket} alt="EmptyBasket" />
+            <img className="EmptyBasketImage" src={EmptyBasket} alt="EmptyBasket" />
             <h1>{t('emptyBasket')}</h1>
           </div>
         )}
