@@ -1,15 +1,28 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { addToBasket } from '../../store/itemsInBasket/actions';
 import '../../i18n';
-import PropTypes from 'prop-types';
 import Button from '../../components/Button/Button';
 import Characteristics from './Characteristics/Characteristics';
 import './ProductPage.css';
 import ProductContext from '../../context/ProductContext';
 
-function ProductPage({ currentCurrency, currentCurrencySign }) {
-  const { currentProduct, addToBasket } = useContext(ProductContext);
+function ProductPage() {
+  const { currentProduct } = useContext(ProductContext);
+  const basketProducts = useSelector(({ basketItems }) => basketItems.basketProducts);
+  const { currentExchange, currentCurrency } = useSelector(({ Rates }) => Rates);
   const { t } = useTranslation();
+
+  const isActive = () => {
+    const arrIds = basketProducts.map((elem) => elem.Details.Id);
+    return arrIds.includes(currentProduct.Details.Id);
+  };
+
+  const status = {
+    active: isActive(),
+    text: isActive() ? t('alreadyInBasket') : t('buy')
+  };
   return (
     <div className="ProductPage">
       <div className="ProductContainer">
@@ -23,8 +36,13 @@ function ProductPage({ currentCurrency, currentCurrencySign }) {
           <div className="ProductPageBuyMenu">
             <div className="ProductCost br">
               <h2>{t('pricePerUnit')}</h2>
-              <h2>{`${(currentProduct.Price * currentCurrency).toFixed(2)} ${currentCurrencySign}`}</h2>
-              <Button item={currentProduct} handleClick={addToBasket} text={t('buy')} />
+              <h2>{`${(currentProduct.Price * currentExchange).toFixed(2)} ${currentCurrency.sign}`}</h2>
+              <Button
+                active={status.active}
+                item={currentProduct}
+                toDo={addToBasket}
+                text={status.text}
+              />
             </div>
             <div className="ProductPaymentMethods br">
               <div>
@@ -43,10 +61,5 @@ function ProductPage({ currentCurrency, currentCurrencySign }) {
     </div>
   );
 }
-
-ProductPage.propTypes = {
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
-};
 
 export default ProductPage;

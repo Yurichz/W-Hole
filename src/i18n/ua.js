@@ -21,6 +21,7 @@ export default {
   byPopular: 'Ходові',
   emptyBasket: 'У кошику нічного немає :(',
   buy: 'Купити',
+  alreadyInBasket: 'У кошику',
   pricePerUnit: 'Ціна за одиницю:',
   payment: 'Оплата',
   paymentMethods: 'Готівка,Безготівкова,VISA/Mastercard',
@@ -41,5 +42,9 @@ export default {
     mouse: 'МИША',
     headphones: 'НАВУШНИКИ',
     ram: 'ОП'
+  },
+  refreshRates: {
+    loading: 'Завантаження...',
+    refreshRates: 'Оновити курс'
   }
 };

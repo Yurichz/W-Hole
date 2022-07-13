@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import AOS from 'aos';
 import ShopItemsDatas from '../../../components/ShopItemCase/ShopItemData';
 import './ShopContent.css';
 import 'aos/dist/aos.css';
 import ShopContentView from './ShopContentView';
 
-function ShopContent({ currentCurrency, currentCurrencySign }) {
+function ShopContent() {
   const [sortSelector, setSortSelector] = useState('byId');
   const [shopFilters, setShopFilters] = useState([]);
   const [shopItemsData, setShopItemsData] = useState(ShopItemsDatas.slice());
@@ -66,15 +65,8 @@ function ShopContent({ currentCurrency, currentCurrencySign }) {
       shopFiltersLength={shopFilters.length}
       ShopItemsData={shopItemsData}
       checkInFilter={checkInFilter}
-      currentCurrency={currentCurrency}
-      currentCurrencySign={currentCurrencySign}
     />
   );
 }
-
-ShopContent.propTypes = {
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
-};
 
 export default ShopContent;

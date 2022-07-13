@@ -1,19 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './BasketItemCase.css';
 import PropTypes from 'prop-types';
-import ProductContext from '../../../context/ProductContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteFromBasket, setCurrentDragItem, changeSequenceBasket } from '../../../store/itemsInBasket/actions';
 
 function BasketItemCase({
-  product, active, dragStartHandler, dragOverHandler,
-  dragDropHandler, currentCurrency, currentCurrencySign 
+  product, active, dragOverHandler
 }) {
-  const { deleteFromBasket } = useContext(ProductContext);
+  const dispatch = useDispatch();
+  const { currentExchange, currentCurrency } = useSelector(({ Rates }) => Rates);
   return (
     <div
       className={(active) ? 'BasketProduct active' : 'BasketProduct'}
-      onDragStart={(e) => dragStartHandler(e, product)}
+      onDragStart={(e) => dispatch(setCurrentDragItem(e, product))}
       onDragOver={(e) => dragOverHandler(e)}
-      onDrop={(e) => dragDropHandler(e, product)}
+      onDrop={(e) => dispatch(changeSequenceBasket(e, product))}
       draggable
     >
       <div className="BasketProductInfo">
@@ -22,10 +23,10 @@ function BasketItemCase({
           <h2>{product.Name}</h2>
         </div>
         <div className="BasketProductBoxInfo">
-          <h2>{`${(product.Price * currentCurrency).toFixed(2)} ${currentCurrencySign}`}</h2>
+          <h2>{`${(product.Price * currentExchange).toFixed(2)} ${currentCurrency.sign}`}</h2>
           <div
             className="DeleteIconFromBasket"
-            onClick={() => deleteFromBasket(product.Details.Id)}
+            onClick={() => dispatch(deleteFromBasket(product.Details.Id))}
           >
             <h3>X</h3>
           </div>
@@ -38,11 +39,7 @@ function BasketItemCase({
 BasketItemCase.propTypes = {
   product: PropTypes.object.isRequired,
   active: PropTypes.bool.isRequired,
-  dragStartHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,
-  dragDropHandler: PropTypes.func.isRequired,
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
 };
 
 export default BasketItemCase;

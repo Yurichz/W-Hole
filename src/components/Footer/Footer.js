@@ -17,7 +17,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="src/components/Footer/Footer"
+                  href="https://www.instagram.com/yurich_hz/"
                   className="MyLinks"
                   target="_blank"
                   rel="noreferrer"

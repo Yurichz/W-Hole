@@ -2,6 +2,7 @@
     display: flex;
     border-radius: 50px;
     background: #950aa5;
+    width: 25%;
     padding: 10px 70px;
     margin: 20px 20px 20px 20px;
     color: white;
@@ -10,6 +11,14 @@
     cursor: pointer;
     justify-content: center;
 }
+.btn.active{
+    background: #660770;
+    transition: ease 0.15s;
+}
 .btn:hover{
-    background: #81088d;
+    background: #660770;
+}
+.btn h2{
+    font-size: 20px;
+    white-space: nowrap;
 }

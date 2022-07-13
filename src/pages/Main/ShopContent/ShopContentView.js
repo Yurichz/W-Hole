@@ -8,8 +8,8 @@ import ShopFilterList from './ShopFilterList';
 import 'aos/dist/aos.css';
 
 function ShopContentView({
-  changeSortSelector, addOrRemoveToFilter, shopFiltersLength, ShopItemsData,
-  checkInFilter, currentCurrency, currentCurrencySign 
+  changeSortSelector, addOrRemoveToFilter,
+  shopFiltersLength, ShopItemsData, checkInFilter
 }) {
   const { t } = useTranslation();
   return (
@@ -34,8 +34,6 @@ function ShopContentView({
             shopElements={shopFiltersLength
               ? ShopItemsData.filter((item) => checkInFilter(item))
               : ShopItemsData}
-            currentCurrency={currentCurrency}
-            currentCurrencySign={currentCurrencySign}
           />
         </div>
       </div>
@@ -49,8 +47,6 @@ ShopContentView.propTypes = {
   shopFiltersLength: PropTypes.number.isRequired,
   ShopItemsData: PropTypes.array.isRequired,
   checkInFilter: PropTypes.func.isRequired,
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
 };
 
 export default ShopContentView;

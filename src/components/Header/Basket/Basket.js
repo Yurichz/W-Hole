@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import BasketView from './BasketView';
-import ProductContext from '../../../context/ProductContext';
 
 function Basket({
-  active, changeActive,
-  dragStartHandler, dragOverHandler, dragDropHandler,
-  currentCurrency, currentCurrencySign
+  active, changeActive, dragOverHandler
 }) {
   const [number, setNumber] = useState(0);
 
-  const { basketProducts } = useContext(ProductContext);
+  const basketProducts = useSelector(({ basketItems }) => basketItems.basketProducts);
 
   const targetOnKeyDown = (e) => {
     if (active) {
@@ -34,13 +32,9 @@ function Basket({
     <BasketView
       active={active}
       changeActive={changeActive}
-      currentCurrency={currentCurrency}
       basketProducts={basketProducts}
-      dragStartHandler={dragStartHandler}
       dragOverHandler={dragOverHandler}
-      dragDropHandler={dragDropHandler}
       number={number}
-      currentCurrencySign={currentCurrencySign}
     />
   );
 }
@@ -48,11 +42,7 @@ function Basket({
 Basket.propTypes = {
   active: PropTypes.bool.isRequired,
   changeActive: PropTypes.func.isRequired,
-  dragStartHandler: PropTypes.func.isRequired,
-  dragOverHandler: PropTypes.func.isRequired,
-  dragDropHandler: PropTypes.func.isRequired,
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
+  dragOverHandler: PropTypes.func.isRequired
 };
 
 export default Basket;

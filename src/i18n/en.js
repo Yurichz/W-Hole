@@ -21,6 +21,7 @@ export default {
   byPopular: 'By Popular',
   emptyBasket: 'The basket is empty :(',
   buy: 'Buy',
+  alreadyInBasket: 'In basket',
   pricePerUnit: 'Price per unit:',
   payment: 'Payment',
   paymentMethods: 'Cash,Non-cash,VISA/Mastercard',
@@ -41,5 +42,9 @@ export default {
     mouse: 'MOUSE',
     headphones: 'HEADPHONES',
     ram: 'RAM'
+  },
+  refreshRates: {
+    loading: 'Loading...',
+    refreshRates: 'Refresh rates'
   }
 };

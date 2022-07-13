@@ -3,44 +3,42 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 import './ShopItemCase.css';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import Button from '../Button/Button';
+import { useSelector } from 'react-redux';
 import ProductContext from '../../context/ProductContext';
+import ShopItemCaseView from './ShopItemCaseView';
 
-function ShopItemCase({ element, currentCurrency, currentCurrencySign }) {
-  const { changeCurrentProduct, addToBasket } = useContext(ProductContext);
+function ShopItemCase({ element }) {
+  const { changeCurrentProduct } = useContext(ProductContext);
+  const { t } = useTranslation();
+  const basketProducts = useSelector(({ basketItems }) => basketItems.basketProducts);
+  const { currentExchange, currentCurrency } = useSelector(({ Rates }) => Rates);
+
   const handleClick = () => {
     changeCurrentProduct(element);
   };
-  const { t } = useTranslation();
+
+  const isActive = () => {
+    const arrIds = basketProducts.map((elem) => elem.Details.Id);
+    return arrIds.includes(element.Details.Id);
+  };
+
+  const status = {
+    active: isActive(),
+    text: isActive() ? t('alreadyInBasket') : t('buy')
+  };
   return (
-    <div
-      className="shopItemCase"
-      onClick={handleClick}
-    >
-      <Link to={`/product/${element.Name}`}>
-        <div className="shopItemInfo">
-          <div>
-            <img className="shopItem-images" src={element.Image} alt={element.Details.Alt} />
-          </div>
-          <div className="shopItem-text">
-            <h2>{element.Name}</h2>
-            <h3>
-              {`${(element.Price * currentCurrency).toFixed(2)}
-              ${currentCurrencySign}`}
-            </h3>
-          </div>
-        </div>
-      </Link>
-      <Button item={element} handleClick={addToBasket} text={t('buy')} />
-    </div>
+    <ShopItemCaseView
+      element={element}
+      currentExchange={currentExchange}
+      currentCurrency={currentCurrency.sign}
+      handleClick={handleClick}
+      status={status}
+    />
   );
 }
 
 ShopItemCase.propTypes = {
-  element: PropTypes.object.isRequired,
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired,
+  element: PropTypes.object.isRequired
 };
 
 export default ShopItemCase;

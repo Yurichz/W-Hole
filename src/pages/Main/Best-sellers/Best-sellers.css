@@ -64,19 +64,3 @@
     padding-left: 35px;
     font-weight: 400;
 }
-.btn{
-    border-radius: 50px;
-    background: #950aa5;
-    padding: 10px 70px;
-    margin: 10px 70px 10px 20px;
-    color: white;
-    height: 25px;
-    transition: 150ms linear;
-}
-.btn h2{
-    font-size: 20px;
-}
-.btn:hover{
-    background: #81088d;
-    color: #cecece;
-}

@@ -1,12 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Button.css';
 
-function Button({ item, handleClick, text }) {
+function Button({
+  active, item, toDo, text
+}) {
+  const dispatch = useDispatch();
   return (
     <div
-      className="btn"
-      onClick={() => handleClick(item)}
+      className={active ? 'btn active' : 'btn'}
+      onClick={item ? () => dispatch(toDo(item)) : () => toDo()}
     >
       <h2>
         {text}
@@ -15,9 +19,15 @@ function Button({ item, handleClick, text }) {
   );
 }
 
+Button.defaultProps = {
+  active: false,
+  item: false
+};
+
 Button.propTypes = {
-  item: PropTypes.object.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  active: PropTypes.bool,
+  item: PropTypes.any,
+  toDo: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 };
 export default Button;

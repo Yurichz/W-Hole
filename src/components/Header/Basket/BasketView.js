@@ -8,8 +8,7 @@ import BasketItemCase from './BasketItemCase';
 import EmptyBasket from '../../../assets/EmptyBasket.svg';
 
 function BasketView({
-  basketProducts, dragStartHandler, dragOverHandler,
-  dragDropHandler, number, currentCurrency, currentCurrencySign
+  basketProducts, dragOverHandler, number
 }) {
   const { t } = useTranslation();
   return (
@@ -23,11 +22,7 @@ function BasketView({
             key={element.Details.Id}
             product={element}
             active={i + 1 === number}
-            dragStartHandler={dragStartHandler}
             dragOverHandler={dragOverHandler}
-            dragDropHandler={dragDropHandler}
-            currentCurrency={currentCurrency}
-            currentCurrencySign={currentCurrencySign}
           />
         ))
         : (
@@ -41,12 +36,8 @@ function BasketView({
 }
 
 BasketView.propTypes = {
-  dragStartHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,
-  dragDropHandler: PropTypes.func.isRequired,
   number: PropTypes.number.isRequired,
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired,
   basketProducts: PropTypes.array.isRequired,
 };
 

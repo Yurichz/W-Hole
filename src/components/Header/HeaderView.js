@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { setCurrentExchange } from '../../store/exchangeRates/actions';
+import Button from '../Button/Button';
+import '../../i18n';
 import SiteLogo from './Logo.svg';
 import Basket from './Basket.png';
 import { ReactComponent as BurgerButton } from './BurgerButton.svg';
 import './Header.css';
 
 function HeaderView({
-  changeActiveMenu, changeActiveBasket, changeCurrentCurrency,
-  basketLength, basketLengthAnim, exchangeRates 
+  changeActiveMenu, changeActiveBasket, getExchangeRates,
+  basketLength, basketLengthAnim, exchangeRates, LoadingInfo
 }) {
+  const dispatch = useDispatch();
+  const { t } = useTranslation('', { keyPrefix: 'refreshRates' });
   return (
     <header>
       <div
@@ -23,10 +30,16 @@ function HeaderView({
         <p>W-Hole</p>
       </Link>
       <div className="BasketName">
+        <div className="ButtonToRefreshRates">
+          <Button
+            toDo={getExchangeRates}
+            text={LoadingInfo ? t('loading') : t('refreshRates')}
+          />
+        </div>
         <select
           className="changeCurrentCurrency"
           onChange={(e) => {
-            changeCurrentCurrency(e.target.value, exchangeRates[e.target.value]);
+            dispatch(setCurrentExchange(e.target.value, exchangeRates[e.target.value]));
           }}
         >
           {Object.keys(exchangeRates).map((key) => (
@@ -50,10 +63,11 @@ function HeaderView({
 HeaderView.propTypes = {
   changeActiveMenu: PropTypes.func.isRequired,
   changeActiveBasket: PropTypes.func.isRequired,
-  changeCurrentCurrency: PropTypes.func.isRequired,
   basketLength: PropTypes.number.isRequired,
   basketLengthAnim: PropTypes.string.isRequired,
-  exchangeRates: PropTypes.object.isRequired
+  exchangeRates: PropTypes.any.isRequired,
+  getExchangeRates: PropTypes.func.isRequired,
+  LoadingInfo: PropTypes.bool.isRequired
 };
 
 export default HeaderView;

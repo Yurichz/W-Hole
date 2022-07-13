@@ -18,9 +18,7 @@ import './App.css';
 
 function AppView({
   changeActiveMenu, changeActiveBasket, basketLength,
-  changeCurrentCurrency, currentCurrency, currentCurrencySign,
-  activeBasket, dragStartHandler, dragOverHandler,
-  dragDropHandler, activeMenu, items 
+  activeBasket, dragOverHandler, activeMenu, items
 }) {
   const { t } = useTranslation();
   return (
@@ -29,25 +27,18 @@ function AppView({
         changeActiveMenu={changeActiveMenu}
         changeActiveBasket={changeActiveBasket}
         basketLength={basketLength}
-        changeCurrentCurrency={changeCurrentCurrency}
       />
       <Routes>
         <Route
           path="/product/:title"
           element={
-            <ProductPage
-              currentCurrency={currentCurrency}
-              currentCurrencySign={currentCurrencySign}
-            />
+            <ProductPage />
                     }
         />
         <Route
           path="*"
           element={
-            <Main
-              currentCurrency={currentCurrency}
-              currentCurrencySign={currentCurrencySign}
-            />
+            <Main />
                     }
         />
       </Routes>
@@ -55,11 +46,7 @@ function AppView({
       <Basket
         active={activeBasket}
         changeActive={changeActiveBasket}
-        currentCurrency={currentCurrency}
-        dragStartHandler={dragStartHandler}
         dragOverHandler={dragOverHandler}
-        dragDropHandler={dragDropHandler}
-        currentCurrencySign={currentCurrencySign}
       />
       <Menu
         active={activeMenu}
@@ -75,13 +62,8 @@ AppView.propTypes = {
   changeActiveMenu: PropTypes.func.isRequired,
   changeActiveBasket: PropTypes.func.isRequired,
   basketLength: PropTypes.number.isRequired,
-  changeCurrentCurrency: PropTypes.func.isRequired,
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired,
   activeBasket: PropTypes.bool.isRequired,
-  dragStartHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,
-  dragDropHandler: PropTypes.func.isRequired,
   activeMenu: PropTypes.bool.isRequired,
   items: PropTypes.array.isRequired
 };

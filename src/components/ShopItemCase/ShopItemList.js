@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ShopItemCase from './ShopItemCase';
 
-function ShopItemsList({ shopElements, currentCurrency, currentCurrencySign }) {
+function ShopItemsList({ shopElements }) {
   return (
     <>
       {shopElements.map((element) => (
         <div key={element.Details.Id}>
           <ShopItemCase
             element={element}
-            currentCurrency={currentCurrency}
-            currentCurrencySign={currentCurrencySign}
           />
         </div>
       ))}
@@ -19,9 +17,7 @@ function ShopItemsList({ shopElements, currentCurrency, currentCurrencySign }) {
 }
 
 ShopItemsList.propTypes = {
-  shopElements: PropTypes.array.isRequired,
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired
+  shopElements: PropTypes.array.isRequired
 };
 
 export default ShopItemsList;

@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { setExchangeRates } from '../../store/exchangeRates/actions';
 import HeaderView from './HeaderView';
 
 function Header({
-  changeActiveMenu, changeActiveBasket, changeCurrentCurrency, basketLength 
+  changeActiveMenu, changeActiveBasket, basketLength
 }) {
   const [LengthAnim, setLengthAnim] = useState('basketLength');
-
-  const [exchangeRates, setExchangeRates] = useState({});
+  const [LoadingInfo, setLoadingInfo] = useState(false);
+  const dispatch = useDispatch();
+  const exchangeRates = useSelector(({ Rates }) => Rates.exchangeRates);
 
   const getExchangeRates = async () => {
+    setLoadingInfo(true);
     const response = await fetch('https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD');
     const data = await response.json();
     if (data.result === 'success') {
-      setExchangeRates(data.conversion_rates);
+      dispatch(setExchangeRates(data.conversion_rates));
+      setLoadingInfo(false);
     } else {
       console.log('Error load data!');
     }
@@ -36,8 +41,9 @@ function Header({
       changeActiveBasket={changeActiveBasket}
       basketLength={basketLength}
       basketLengthAnim={LengthAnim}
-      changeCurrentCurrency={changeCurrentCurrency}
       exchangeRates={exchangeRates}
+      getExchangeRates={getExchangeRates}
+      LoadingInfo={LoadingInfo}
     />
   );
 }
@@ -45,7 +51,6 @@ function Header({
 Header.propTypes = {
   changeActiveMenu: PropTypes.func.isRequired,
   changeActiveBasket: PropTypes.func.isRequired,
-  changeCurrentCurrency: PropTypes.func.isRequired,
   basketLength: PropTypes.number.isRequired
 };
 

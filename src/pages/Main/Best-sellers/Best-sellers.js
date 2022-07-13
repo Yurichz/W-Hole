@@ -3,12 +3,11 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 import './Best-sellers.css';
 import AOS from 'aos';
-import PropTypes from 'prop-types';
 import ShopItemsList from '../../../components/ShopItemCase/ShopItemList';
 import ShopItemsData from '../../../components/ShopItemCase/ShopItemData';
 import 'aos/dist/aos.css';
 
-function Bestsellers({ currentCurrency, currentCurrencySign }) {
+function Bestsellers() {
   const ShopItems = useMemo(
     () => ShopItemsData.slice()
       .sort((a, b) => b.Details.Purchase - a.Details.Purchase)
@@ -28,18 +27,11 @@ function Bestsellers({ currentCurrency, currentCurrencySign }) {
         <div className="sellers-items" data-aos="fade-right">
           <ShopItemsList
             shopElements={ShopItems}
-            currentCurrency={currentCurrency}
-            currentCurrencySign={currentCurrencySign}
           />
         </div>
       </div>
     </div>
   );
 }
-
-Bestsellers.propTypes = {
-  currentCurrency: PropTypes.number.isRequired,
-  currentCurrencySign: PropTypes.string.isRequired,
-};
 
 export default Bestsellers;
