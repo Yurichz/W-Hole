@@ -45,6 +45,7 @@ export default {
   },
   refreshRates: {
     loading: 'Завантаження...',
-    refreshRates: 'Оновити курс'
+    refreshRates: 'Оновити курс',
+    somethingWrong: 'Щось не так'
   }
 };

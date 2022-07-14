@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { setCurrentExchange } from '../../store/exchangeRates/actions';
-import Button from '../Button/Button';
 import '../../i18n';
+import Button from '../Button/Button';
 import SiteLogo from './Logo.svg';
 import Basket from './Basket.png';
 import { ReactComponent as BurgerButton } from './BurgerButton.svg';
@@ -33,7 +33,7 @@ function HeaderView({
         <div className="ButtonToRefreshRates">
           <Button
             toDo={getExchangeRates}
-            text={LoadingInfo ? t('loading') : t('refreshRates')}
+            text={t(LoadingInfo)}
           />
         </div>
         <select
@@ -67,7 +67,7 @@ HeaderView.propTypes = {
   basketLengthAnim: PropTypes.string.isRequired,
   exchangeRates: PropTypes.any.isRequired,
   getExchangeRates: PropTypes.func.isRequired,
-  LoadingInfo: PropTypes.bool.isRequired
+  LoadingInfo: PropTypes.string.isRequired
 };
 
 export default HeaderView;

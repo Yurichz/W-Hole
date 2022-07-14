@@ -45,6 +45,7 @@ export default {
   },
   refreshRates: {
     loading: 'Loading...',
-    refreshRates: 'Refresh rates'
+    refreshRates: 'Refresh rates',
+    somethingWrong: 'Something is wrong'
   }
 };

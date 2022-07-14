@@ -8,18 +8,19 @@ function Header({
   changeActiveMenu, changeActiveBasket, basketLength
 }) {
   const [LengthAnim, setLengthAnim] = useState('basketLength');
-  const [LoadingInfo, setLoadingInfo] = useState(false);
+  const [LoadingInfo, setLoadingInfo] = useState('refreshRates');
   const dispatch = useDispatch();
   const exchangeRates = useSelector(({ Rates }) => Rates.exchangeRates);
 
   const getExchangeRates = async () => {
-    setLoadingInfo(true);
+    setLoadingInfo('loading');
     const response = await fetch('https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD');
     const data = await response.json();
     if (data.result === 'success') {
       dispatch(setExchangeRates(data.conversion_rates));
-      setLoadingInfo(false);
+      setLoadingInfo('refreshRates');
     } else {
+      setLoadingInfo('somethingWrong');
       console.log('Error load data!');
     }
   };
