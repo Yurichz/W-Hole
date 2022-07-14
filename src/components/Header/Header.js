@@ -14,7 +14,7 @@ function Header({
 
   const getExchangeRates = async () => {
     setLoadingInfo(true);
-    const response = await fetch('https://v6.exchangerate-api.com/v6/ff8a5b28577d242b72ae57d/latest/USD');
+    const response = await fetch('https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD');
     const data = await response.json();
     if (data.result === 'success') {
       dispatch(setExchangeRates(data.conversion_rates));

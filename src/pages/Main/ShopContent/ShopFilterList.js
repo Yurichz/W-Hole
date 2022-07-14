@@ -6,36 +6,43 @@ import ShopFilterCase from './ShopFilterCase';
 import './ShopFilterList.css';
 
 function ShopFilterList({ addOrRemoveToFilter }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const filterList = useMemo(
     () => [
       {
-        MONITOR: t('filterList.monitor')
+        key: 'MONITOR',
+        text: 'filterList.monitor'
       },
       {
-        GPU: t('filterList.gpu')
+        key: 'GPU',
+        text: 'filterList.gpu'
       },
       {
-        CPU: t('filterList.cpu')
+        key: 'CPU',
+        text: 'filterList.cpu'
       },
       {
-        MOUSE: t('filterList.mouse')
+        key: 'MOUSE',
+        text: 'filterList.mouse'
       },
       {
-        HEADPHONES: t('filterList.headphones')
+        key: 'HEADPHONES',
+        text: 'filterList.headphones'
       },
       {
-        RAM: t('filterList.ram')
+        key: 'RAM',
+        text: 'filterList.ram'
       }],
-    [i18n.language]
+    []
   );
+
   return (
     <div className="ShopFilterList">
       <h2>{t('filters')}</h2>
       <div className="FilterItems">
         {filterList.map((item) => (
           <ShopFilterCase
-            key={Object.keys(item).toString()}
+            key={item.key}
             filter={item}
             addOrRemoveToFilter={addOrRemoveToFilter}
           />

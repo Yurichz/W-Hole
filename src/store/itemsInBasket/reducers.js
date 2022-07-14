@@ -8,16 +8,9 @@ import {
 const addToBasket = (basketProducts, item) => {
   const arrIds = basketProducts.map((elem) => elem.Details.Id);
   if (!arrIds.includes(item.Details.Id)) {
-    localStorage.setItem('basketProducts', JSON.stringify([...basketProducts, item]));
     return [...basketProducts, item];
   }
   return basketProducts;
-};
-
-const deleteItemFromBasket = (basketProducts, Id) => {
-  const newBasketProducts = basketProducts.filter((item) => item.Details.Id !== Id);
-  localStorage.setItem('basketProducts', JSON.stringify(newBasketProducts));
-  return newBasketProducts;
 };
 
 const dragDropHandler = (e, product, currentDragProduct, basketProducts) => {
@@ -34,7 +27,7 @@ const dragDropHandler = (e, product, currentDragProduct, basketProducts) => {
 };
 
 export const initialState = {
-  basketProducts: JSON.parse(localStorage.getItem('basketProducts')) || [],
+  basketProducts: [],
   currentDragProduct: null
 };
 
@@ -48,7 +41,7 @@ export default function basketItems(state = initialState, action) {
     case DELETE_ITEM_FROM_BASKET:
       return {
         ...state,
-        basketProducts: deleteItemFromBasket(state.basketProducts, action.Id)
+        basketProducts: state.basketProducts.filter((item) => item.Details.Id !== action.Id)
       };
     case CHANGE_SEQUENCE_BASKET:
       return {

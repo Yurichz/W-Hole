@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToBasket } from '../../store/itemsInBasket/actions';
 import '../../i18n';
 import Button from '../../components/Button/Button';
@@ -13,6 +13,7 @@ function ProductPage() {
   const basketProducts = useSelector(({ basketItems }) => basketItems.basketProducts);
   const { currentExchange, currentCurrency } = useSelector(({ Rates }) => Rates);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const isActive = () => {
     const arrIds = basketProducts.map((elem) => elem.Details.Id);
@@ -39,8 +40,7 @@ function ProductPage() {
               <h2>{`${(currentProduct.Price * currentExchange).toFixed(2)} ${currentCurrency.sign}`}</h2>
               <Button
                 active={status.active}
-                item={currentProduct}
-                toDo={addToBasket}
+                toDo={() => dispatch(addToBasket(currentProduct))}
                 text={status.text}
               />
             </div>

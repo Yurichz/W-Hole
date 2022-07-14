@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './ShopFilterCase.css';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 function ShopFilterCase({ addOrRemoveToFilter, filter }) {
   const [active, setActive] = useState(false);
@@ -9,15 +11,17 @@ function ShopFilterCase({ addOrRemoveToFilter, filter }) {
     setActive(!active);
   };
 
+  const { t } = useTranslation();
+
   return (
     <div
       className={active ? 'FilterCase active' : 'FilterCase'}
       onClick={() => {
-        addOrRemoveToFilter(Object.keys(filter).toString());
+        addOrRemoveToFilter(filter.key);
         changeActive();
       }}
     >
-      <h3>{Object.values(filter)}</h3>
+      <h3>{t(filter.text)}</h3>
     </div>
   );
 }

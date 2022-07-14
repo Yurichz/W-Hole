@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import '../../i18n';
 import './ShopItemCase.css';
 import PropTypes from 'prop-types';
@@ -7,8 +8,10 @@ import { addToBasket } from '../../store/itemsInBasket/actions';
 import Button from '../Button/Button';
 
 function ShopItemCaseView({
-  element, currentExchange, currentCurrency, handleClick, status
+  element, currentExchange, currentCurrency,
+  handleClick, dispatch, isActive
 }) {
+  const { t } = useTranslation();
   return (
     <div
       className="shopItemCase"
@@ -29,10 +32,9 @@ function ShopItemCaseView({
         </div>
       </Link>
       <Button
-        active={status.active}
-        item={element}
-        toDo={addToBasket}
-        text={status.text}
+        active={isActive}
+        toDo={() => dispatch(addToBasket(element))}
+        text={t(isActive ? 'alreadyInBasket' : 'buy')}
       />
     </div>
   );
@@ -43,7 +45,8 @@ ShopItemCaseView.propTypes = {
   currentExchange: PropTypes.number.isRequired,
   currentCurrency: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
-  status: PropTypes.object.isRequired
+  dispatch: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired
 };
 
 export default ShopItemCaseView;
