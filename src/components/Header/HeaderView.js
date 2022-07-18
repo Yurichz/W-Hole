@@ -13,7 +13,7 @@ import './Header.css';
 
 function HeaderView({
   changeActiveMenu, changeActiveBasket, getExchangeRates,
-  basketLength, basketLengthAnim, exchangeRates, LoadingInfo
+  basketLength, basketLengthAnim, exchangeRates, loadingInfo
 }) {
   const dispatch = useDispatch();
   const { t } = useTranslation('', { keyPrefix: 'refreshRates' });
@@ -32,8 +32,8 @@ function HeaderView({
       <div className="BasketName">
         <div className="ButtonToRefreshRates">
           <Button
-            toDo={getExchangeRates}
-            text={t(LoadingInfo)}
+            toDo={() => dispatch(getExchangeRates())}
+            text={t(loadingInfo)}
           />
         </div>
         <select
@@ -67,7 +67,7 @@ HeaderView.propTypes = {
   basketLengthAnim: PropTypes.string.isRequired,
   exchangeRates: PropTypes.any.isRequired,
   getExchangeRates: PropTypes.func.isRequired,
-  LoadingInfo: PropTypes.string.isRequired
+  loadingInfo: PropTypes.string.isRequired
 };
 
 export default HeaderView;

@@ -1,32 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { setExchangeRates } from '../../store/exchangeRates/actions';
+import { getExchangeRates } from '../../store/exchangeRates/actions';
 import HeaderView from './HeaderView';
 
 function Header({
   changeActiveMenu, changeActiveBasket, basketLength
 }) {
   const [LengthAnim, setLengthAnim] = useState('basketLength');
-  const [LoadingInfo, setLoadingInfo] = useState('refreshRates');
   const dispatch = useDispatch();
-  const exchangeRates = useSelector(({ Rates }) => Rates.exchangeRates);
-
-  const getExchangeRates = async () => {
-    setLoadingInfo('loading');
-    const response = await fetch('https://v6.exchangerate-api.com/v6/0ff8a5b28577d242b72ae57d/latest/USD');
-    const data = await response.json();
-    if (data.result === 'success') {
-      dispatch(setExchangeRates(data.conversion_rates));
-      setLoadingInfo('refreshRates');
-    } else {
-      setLoadingInfo('somethingWrong');
-      console.log('Error load data!');
-    }
-  };
+  const { exchangeRates, loadingInfo } = useSelector(({ Rates }) => Rates);
 
   useEffect(() => {
-    getExchangeRates();
+    dispatch(getExchangeRates());
   }, []);
 
   useEffect(() => {
@@ -44,7 +30,7 @@ function Header({
       basketLengthAnim={LengthAnim}
       exchangeRates={exchangeRates}
       getExchangeRates={getExchangeRates}
-      LoadingInfo={LoadingInfo}
+      loadingInfo={loadingInfo}
     />
   );
 }
