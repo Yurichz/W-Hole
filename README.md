@@ -11,3 +11,4 @@ And: "Adding all kinds of currencies(I didn’t finish reading the task a little
 <h3>HomeWork 9: "Transition to functional components"</h3>
 <h3>HomeWork 10: "Site localization using i18n"</h3>
 <h3>HomeWork 11: "Migrating Request and Products Data to Redux"</h3>
+<h3>HomeWork 12: "Connected redux-thunk"</h3>
